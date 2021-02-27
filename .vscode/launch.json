@@ -1,0 +1,34 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Swagger2SpringBoot<swagger-spring>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "io.swagger.Swagger2SpringBoot",
+            "projectName": "swagger-spring",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Swagger2SpringBoot<swagger-spring>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "io.carsale.Swagger2SpringBoot",
+            "projectName": "swagger-spring",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CarSaleSpringBootApi<swagger-spring>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "io.carsale.CarSaleSpringBootApi",
+            "projectName": "swagger-spring",
+            "args": ""
+        }
+    ]
+}

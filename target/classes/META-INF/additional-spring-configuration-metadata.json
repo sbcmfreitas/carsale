@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "springfox.documentation.open-api.v3.path",
+  "type": "java.lang.String",
+  "description": "A description for 'springfox.documentation.open-api.v3.path'"
+}]}
