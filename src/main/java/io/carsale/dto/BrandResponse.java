@@ -19,7 +19,11 @@ public class BrandResponse{
    /**
      * Constructor
      **/
+    public BrandResponse() {
+      super();
+    }
     public BrandResponse(Brand brand) {
+      super();
       this.id = brand.getId()!=null?brand.getId():null;
       this.name = brand.getName()!=null?brand.getName():null;
     }

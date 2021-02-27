@@ -1,6 +1,7 @@
 package io.carsale.adapter;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 
 import javax.validation.constraints.NotNull;
 
@@ -14,11 +15,12 @@ public class OrderResponseAdapter extends OrderResponse {
 
   private Order order = null;
 
+  private SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
   public OrderResponseAdapter(Order order) {
      super();
      this.order = order;
   }
-
 
 /**
   * Get id
@@ -65,7 +67,7 @@ public class OrderResponseAdapter extends OrderResponse {
    **/
   @Schema(required = true, description = "") @NotNull
     public String getOrderDate() {
-    return order.toString();
+    return dformat.format(order.getOrderDate());
   }
 
 

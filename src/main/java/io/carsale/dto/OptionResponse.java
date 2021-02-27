@@ -21,7 +21,12 @@ public class OptionResponse{
      * Constructor
      * 
      **/
+    public OptionResponse() {
+      super();
+    }
+
     public OptionResponse(Option option) {
+      super();
       this.id = option.getId();
       this.name = option.getName();
     }

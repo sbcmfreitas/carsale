@@ -1,15 +1,17 @@
 package io.carsale.dto;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.validation.annotation.Validated;
-import org.threeten.bp.OffsetDateTime;
-import org.threeten.bp.OffsetTime;
 
 import io.carsale.enums.StatusEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -32,8 +34,10 @@ public class OrderRequest {
     @JsonProperty("value")
     private BigDecimal value = null;
 
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
+	  @DateTimeFormat(iso = ISO.DATE_TIME)
     @JsonProperty("orderDate")
-    private OffsetDateTime orderDate = null;
+    private Date orderDate = null;
   
     @JsonProperty("status")
     private StatusEnum status = null;
@@ -100,11 +104,11 @@ public class OrderRequest {
       * @return orderDate
       **/
       @Schema(required = true, description = "") @NotNull @Valid
-      public OffsetDateTime getOrderDate() {
+      public Date getOrderDate() {
       return orderDate;
     }
 
-    public void setOrderDate(OffsetDateTime orderDate) {
+    public void setOrderDate(Date orderDate) {
       this.orderDate = orderDate;
     }
 

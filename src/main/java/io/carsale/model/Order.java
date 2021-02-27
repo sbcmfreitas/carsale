@@ -1,8 +1,8 @@
 package io.carsale.model;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,8 +10,14 @@ import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Digits;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.validation.annotation.Validated;
 import org.threeten.bp.OffsetDateTime;
 
@@ -41,8 +47,9 @@ public class Order extends AbstractEntity<Long>{
   @Column(name = "value", nullable= false, precision=7, scale=2)  
   private BigDecimal value = null;
 
-  @Column(name = "order_date", nullable= false)  
-  private OffsetDateTime orderDate = null;
+	@Temporal(TemporalType.TIMESTAMP)
+  @Column(name = "order_date", nullable = false)  
+  private Date orderDate = null;
 
   @Enumerated(EnumType.STRING)
   @Column(name = "status", nullable = false)
@@ -104,13 +111,14 @@ public class Order extends AbstractEntity<Long>{
    * Get orderDate
    * @return orderDate
    **/
-  public OffsetDateTime getOrderDate() {
+  public Date getOrderDate() {
     return orderDate;
   }
 
-  public void setOrderDate(OffsetDateTime orderDate) {
+  public void setOrderDate(Date orderDate) {
     this.orderDate = orderDate;
   }
+
 
 
 
@@ -125,6 +133,7 @@ public class Order extends AbstractEntity<Long>{
   public void setStatus(StatusEnum status) {
     this.status = status;
   }
+
 
 
 
