@@ -35,11 +35,11 @@ public class CarApiController implements CarApi {
 
     public ResponseEntity<CarResponse> createCar(
         @Parameter(in = ParameterIn.DEFAULT, description = "Car object that needs to be added to the store", required=true, schema=@Schema()) 
-        @Valid @RequestBody CarRequest body) {
+        @Valid @RequestBody CarRequest carRequest) {
         
         try {
 
-            CarResponse carResponse = this.carService.create(new Car(body));
+            CarResponse carResponse = this.carService.create(new Car(carRequest));
 
             return new ResponseEntity<CarResponse>(carResponse, HttpStatus.CREATED);
 
@@ -89,9 +89,11 @@ public class CarApiController implements CarApi {
         
         try {
 
-            this.carService.delete(id);
-
-            return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
+            if(this.carService.delete(id)){
+                return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+            }else{
+                return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
 
         }catch (JpaObjectRetrievalFailureException|EntityNotFoundException e) {
 

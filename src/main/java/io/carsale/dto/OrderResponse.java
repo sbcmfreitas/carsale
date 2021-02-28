@@ -10,6 +10,7 @@ import javax.validation.constraints.Digits;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import org.springframework.lang.NonNull;
 import org.springframework.validation.annotation.Validated;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -26,18 +27,12 @@ public class OrderResponse {
   private Long id = null;
 
   @JsonProperty("car")
-  @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-  @JoinColumn(name = "car_id", nullable = false)
   private CarResponse car = null;
 
   @JsonProperty("client")
-  @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-  @JoinColumn(name = "client_id", nullable = false)
   private ClientResponse client = null;
 
   @JsonProperty("value")
-  @Digits(integer=9, fraction=2)   
-  @Column(name = "value", nullable= false, precision=7, scale=2)  
   private BigDecimal value = null;
 
   @JsonProperty("orderDate")
@@ -55,6 +50,10 @@ public class OrderResponse {
   public Long getId() {
     return id;
   }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
   
   /**
    * Get car
@@ -63,6 +62,10 @@ public class OrderResponse {
   @Schema(required = true, description = "")
   public CarResponse getCar() {
     return car;
+  }
+
+  public void setCar(CarResponse car) {
+    this.car = car;
   }
 
     /**
@@ -74,6 +77,10 @@ public class OrderResponse {
     return client;
   }
 
+  public void setClient(ClientResponse client) {
+    this.client = client;
+  }
+
     /**
    * Get value
    * @return value
@@ -81,6 +88,10 @@ public class OrderResponse {
   @Schema(required = true, description = "")
   public BigDecimal getValue() {
     return value;
+  }
+
+  public void setValue(BigDecimal value) {
+    this.value = value;
   }
 
     /**
@@ -92,6 +103,10 @@ public class OrderResponse {
     return orderDate;
   }
 
+  public void setOrderDate(String orderDate) {
+    this.orderDate = orderDate;
+  }
+
     /**
    * Get status
    * @return status
@@ -101,10 +116,8 @@ public class OrderResponse {
     return status;
   }
 
- 
-
-
-  
-
+  public void setStatus(String status) {
+    this.status = status;
+  }
 
 }

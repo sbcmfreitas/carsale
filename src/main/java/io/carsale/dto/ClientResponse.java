@@ -33,7 +33,7 @@ public class ClientResponse {
     * 
     * @return id
   **/
-  @Schema(required = true, description = "") @NotNull @Valid
+  @Schema(required = true, description = "")
   public Long getId() {
     return id;
   }
@@ -46,7 +46,7 @@ public class ClientResponse {
    * Get lastName
    * @return lastName
    **/
-  @Schema(required = true, description = "") @NotNull
+  @Schema(required = true, description = "")
   public String getName() {
     return name;
   }
@@ -60,7 +60,7 @@ public class ClientResponse {
    * Get email
    * @return email
    **/
-  @Schema(required = true, description = "") @NotNull
+  @Schema(required = true, description = "")
     public String getEmail() {
     return email;
   }
@@ -74,7 +74,7 @@ public class ClientResponse {
    * Get phone
    * @return phone
    **/
-  @Schema(required = true, description = "") @NotNull
+  @Schema(required = true, description = "")
     public String getPhone() {
     return phone;
   }

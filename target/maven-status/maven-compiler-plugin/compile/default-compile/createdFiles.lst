@@ -15,6 +15,7 @@ io\carsale\repository\interfaces\ClientRespository.class
 io\carsale\configuration\CustomInstantDeserializer$FromIntegerArguments.class
 io\carsale\service\ClientServiceImpl.class
 io\carsale\configuration\HomeController.class
+io\carsale\dto\ClientRequest.class
 io\carsale\configuration\CustomInstantDeserializer$12.class
 io\carsale\configuration\SwaggerUiConfiguration.class
 io\carsale\service\CarServiceImpl.class

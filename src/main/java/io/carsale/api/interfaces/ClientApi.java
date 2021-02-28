@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import io.carsale.dto.ClientRequest;
 import io.carsale.dto.ClientResponse;
-import io.carsale.model.Client;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -34,7 +34,7 @@ public interface ClientApi {
         method = RequestMethod.POST)
     ResponseEntity<ClientResponse> createClient(
         @Parameter(in = ParameterIn.DEFAULT, description = "Created client object", required=true, schema=@Schema()) 
-        @Valid @RequestBody Client body);
+        @Valid @RequestBody ClientRequest clientRequest);
 
 
 
@@ -44,13 +44,13 @@ public interface ClientApi {
         @ApiResponse(responseCode = "400", description = "Bad request"), 
         @ApiResponse(responseCode = "404", description = "Not found"),
         @ApiResponse(responseCode = "500", description = "Internal server Error") })
-    @RequestMapping(value = "/client/{id}",
+    @RequestMapping(value = "/client",
         produces = { "application/json" }, 
         consumes = { "application/json" }, 
         method = RequestMethod.PUT)
     ResponseEntity<ClientResponse> updateClient(
          @Parameter(in = ParameterIn.DEFAULT, description = "Updated client object", required=true, schema=@Schema()) 
-         @Valid @RequestBody Client body);   
+         @Valid @RequestBody ClientRequest clientRequest);   
 
 
     @Operation(summary = "Delete client", description = "Delete client.", tags={ "Client" })

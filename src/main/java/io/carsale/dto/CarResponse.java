@@ -3,9 +3,6 @@ package io.carsale.dto;
 import java.math.BigDecimal;
 import java.util.List;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.springframework.validation.annotation.Validated;
@@ -36,7 +33,7 @@ public class CarResponse{
      * 
      * @return id
      **/
-    @Schema(required = true, description = "") @NotNull @Valid
+    @Schema(required = true, description = "")
     public Long getId() {
       return id;
     }
@@ -64,7 +61,7 @@ public class CarResponse{
      * 
      * @return value
      **/
-    @Schema(required = true, description = "") @NotNull @Valid
+    @Schema(required = true, description = "")
     public BigDecimal getValue() {
       return value;
     }

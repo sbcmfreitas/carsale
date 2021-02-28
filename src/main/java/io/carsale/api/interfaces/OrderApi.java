@@ -44,7 +44,7 @@ public interface OrderApi {
         @ApiResponse(responseCode = "400", description = "Bad request"), 
         @ApiResponse(responseCode = "404", description = "Not found"),
         @ApiResponse(responseCode = "500", description = "Internal server Error") })
-    @RequestMapping(value = "/order/{id}",
+    @RequestMapping(value = "/order",
         produces = { "application/json" }, 
         consumes = { "application/json" }, 
         method = RequestMethod.PUT)

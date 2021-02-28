@@ -41,6 +41,7 @@ C:\GIT\CarSale\src\main\java\io\carsale\repository\CarRespositoryImpl.java
 C:\GIT\CarSale\src\main\java\io\carsale\repository\interfaces\BrandRespository.java
 C:\GIT\CarSale\src\main\java\io\carsale\repository\AbstractRepository.java
 C:\GIT\CarSale\src\main\java\io\carsale\service\ClientServiceImpl.java
+C:\GIT\CarSale\src\main\java\io\carsale\dto\ClientRequest.java
 C:\GIT\CarSale\src\main\java\io\carsale\service\interfaces\CarService.java
 C:\GIT\CarSale\src\main\java\io\carsale\model\Brand.java
 C:\GIT\CarSale\src\main\java\io\carsale\model\Client.java

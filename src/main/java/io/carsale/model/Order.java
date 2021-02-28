@@ -14,12 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Digits;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.validation.annotation.Validated;
-import org.threeten.bp.OffsetDateTime;
 
 import io.carsale.dto.OrderRequest;
 import io.carsale.enums.StatusEnum;

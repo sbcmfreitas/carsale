@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.carsale.api.interfaces.ClientApi;
+import io.carsale.dto.ClientRequest;
 import io.carsale.dto.ClientResponse;
 import io.carsale.model.Client;
 import io.carsale.service.interfaces.ClientService;
@@ -34,11 +35,11 @@ public class ClientApiController implements ClientApi {
 
     public ResponseEntity<ClientResponse> createClient(
         @Parameter(in = ParameterIn.DEFAULT, description = "Created client object", required=true, schema=@Schema()) 
-        @Valid @RequestBody Client body) {
+        @Valid @RequestBody ClientRequest clientRequest) {
 
         try {
 
-            ClientResponse clientResponse = this.clientService.create(body);
+            ClientResponse clientResponse = this.clientService.create(new Client(clientRequest));
 
             return new ResponseEntity<ClientResponse>(clientResponse, HttpStatus.CREATED);
 
@@ -56,11 +57,11 @@ public class ClientApiController implements ClientApi {
 
     public ResponseEntity<ClientResponse> updateClient(
         @Parameter(in = ParameterIn.DEFAULT, description = "Updated client object", required=true, schema=@Schema())
-        @Valid @RequestBody Client body) {
+        @Valid @RequestBody ClientRequest clientRequest) {
         
         try {
 
-            ClientResponse carResponse = this.clientService.update(body);
+            ClientResponse carResponse = this.clientService.update(new Client(clientRequest));
 
             return new ResponseEntity<ClientResponse>(carResponse, HttpStatus.ACCEPTED);
 
@@ -125,9 +126,12 @@ public class ClientApiController implements ClientApi {
 
         try {
 
-            this.clientService.delete(id);
+            if(this.clientService.delete(id)){
+                
+                return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);          
+            }
 
-            return new ResponseEntity<Void>(HttpStatus.OK);
+            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 
         }catch (JpaObjectRetrievalFailureException|EntityNotFoundException e) {
 

@@ -35,11 +35,11 @@ public class OrderApiController implements OrderApi {
 
     public ResponseEntity<OrderResponse> createOrder(
         @Parameter(in = ParameterIn.DEFAULT, description = "Created order object", required=true, schema=@Schema()) 
-        @Valid @RequestBody OrderRequest body) {
+        @Valid @RequestBody OrderRequest orderRequest) {
 
         try {
 
-            OrderResponse orderResponse = this.orderService.create(new Order(body));
+            OrderResponse orderResponse = this.orderService.create(new Order(orderRequest));
 
             return new ResponseEntity<OrderResponse>(orderResponse, HttpStatus.CREATED);
 
@@ -57,11 +57,11 @@ public class OrderApiController implements OrderApi {
 
     public ResponseEntity<OrderResponse> updateOrder(
         @Parameter(in = ParameterIn.DEFAULT, description = "Updated order object", required=true, schema=@Schema())
-        @Valid @RequestBody OrderRequest body) {
+        @Valid @RequestBody OrderRequest orderRequest) {
         
         try {
 
-            OrderResponse carResponse = this.orderService.update(new Order(body));
+            OrderResponse carResponse = this.orderService.update(new Order(orderRequest));
 
             return new ResponseEntity<OrderResponse>(carResponse, HttpStatus.ACCEPTED);
 
@@ -126,9 +126,11 @@ public class OrderApiController implements OrderApi {
 
         try {
 
-            this.orderService.delete(id);
+            if(this.orderService.delete(id)){
+                return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);  
+            }
 
-            return new ResponseEntity<Void>(HttpStatus.OK);
+            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 
         }catch (JpaObjectRetrievalFailureException|EntityNotFoundException e) {
 

@@ -3,13 +3,10 @@ package io.carsale.adapter;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 
-import javax.validation.constraints.NotNull;
-
 import io.carsale.dto.CarResponse;
 import io.carsale.dto.ClientResponse;
 import io.carsale.dto.OrderResponse;
 import io.carsale.model.Order;
-import io.swagger.v3.oas.annotations.media.Schema;
 
 public class OrderResponseAdapter extends OrderResponse {
 
@@ -26,7 +23,6 @@ public class OrderResponseAdapter extends OrderResponse {
   * Get id
   * @return id
   **/
-  @Schema(required = true, description = "") @NotNull
   public Long getId() {
     return order.getId();
   }
@@ -35,7 +31,6 @@ public class OrderResponseAdapter extends OrderResponse {
    * Get client
    * @return client
    **/
-  @Schema(required = true, description = "") @NotNull
   public ClientResponse getClient() {
     return new ClientResponseAdapter(order.getClient());
   }
@@ -45,8 +40,7 @@ public class OrderResponseAdapter extends OrderResponse {
    * Get car
    * @return car
    **/
-  @Schema(required = true, description = "") @NotNull
-    public CarResponse getCar() {
+  public CarResponse getCar() {
     return new CarResponseAdapter(order.getCar());
   }
 
@@ -55,8 +49,7 @@ public class OrderResponseAdapter extends OrderResponse {
    * Get value
    * @return value
    **/
-  @Schema(required = true, description = "") @NotNull 
-    public BigDecimal getValue() {
+  public BigDecimal getValue() {
     return order.getValue();
   }
 
@@ -65,8 +58,7 @@ public class OrderResponseAdapter extends OrderResponse {
    * Get orderDate
    * @return orderDate
    **/
-  @Schema(required = true, description = "") @NotNull
-    public String getOrderDate() {
+  public String getOrderDate() {
     return dformat.format(order.getOrderDate());
   }
 
@@ -75,8 +67,7 @@ public class OrderResponseAdapter extends OrderResponse {
    * Order Status
    * @return status
    **/
-  @Schema(required = true, description = "Order Status") @NotNull
-    public String getStatus() {
+  public String getStatus() {
     return order.getStatus().toString();
   }
 

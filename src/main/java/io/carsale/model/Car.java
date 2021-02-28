@@ -13,14 +13,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OrderBy;
-import javax.validation.Valid;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.validation.annotation.Validated;
 
 import io.carsale.dto.CarRequest;
-import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * Car
