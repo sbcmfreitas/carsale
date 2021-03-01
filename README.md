@@ -3,17 +3,17 @@ CarSale
 
 1) Open API 3.0 Doc
 
-Doc: carsale / openApiDoc
+	Doc: carsale / openApiDoc
 
-https://github.com/sbcmfreitas/carsale/blob/master/openApiDoc/openapi.yaml
+	https://github.com/sbcmfreitas/carsale/blob/master/openApiDoc/openapi.yaml
 
 
    
 2) This project was created with Spring Framework 2.1.16 to simulate a car sale, where the Customer, Car and Order information have endpoints to be invoked, other additional information like Brand and Options were not created in this example but the information is populated with a migration to the upload the project.
  
-A business rule has been added where the maximum limit of options is two.
+   A business rule has been added where the maximum limit of options is two.
 
-An embedded database was used (h2) where it is built when uploading the project as well as the relationships between tables and primary keys and foreign keys
+   An embedded database was used (h2) where it is built when uploading the project as well as the relationships between tables and primary keys and foreign keys
 
 To access the DB frontend, access the address http://localhost:8080/v1/h2-console/login.jsp , after project start.
 
@@ -54,19 +54,19 @@ To access the DB frontend, access the address http://localhost:8080/v1/h2-consol
    
    
  5) Among the experiences I had with blocking transactions, the first case was the need for a sql query that involved a large volume of data
-and at the same time a lot of new information was still inserted and updated, for issuing reports with a lot of information for South America.
+		and at the same time a lot of new information was still inserted and updated, for issuing reports with a lot of information for South America.
 
-We chose to adopt the following measures, in order to minimize problems with locks in migration:
+	We chose to adopt the following measures, in order to minimize problems with locks in migration:
  
-Adopt a consultation timeout.
+	Adopt a consultation timeout.
 
-Adopt associated connections, where it allows a customer with multiple connections to link them to a single transaction space, so the connections are not blocked.
+	Adopt associated connections, where it allows a customer with multiple connections to link them to a single transaction space, so the connections are not blocked.
 
-Schedules were also adopted where there was little use for executing large INSERT, UPDATE or DELETE batches. (Operations that block records)
+	Schedules were also adopted where there was little use for executing large INSERT, UPDATE or DELETE batches. (Operations that block records)
 
-Use of Materialized Views for historical data and some occasions.
+	Use of Materialized Views for historical data and some occasions.
 
-Create a script for monitoring locks and query execution time for reporting and analysis.
+	Create a script for monitoring locks and query execution time for reporting and analysis.
  
  6) Sent
    
