@@ -5,14 +5,15 @@ CarSale
 
 Doc: carsale / openApiDoc
 
-Or
-
-http://localhost:8080/v1/swagger-ui/#/
+https://github.com/sbcmfreitas/carsale/blob/master/openApiDoc/openapi.yaml
    
-2) This project was created with Spring Framework 2.1.16 to simulate a car sale, where the Customer, Car and Order information have endpoints to be    invoked, other additional information like Brand and Options were not created in this example but the information is populated with a migration to the upload the project.
+2) This project was created with Spring Framework 2.1.16 to simulate a car sale, where the Customer, Car and Order information have endpoints to be invoked, other additional information like Brand and Options were not created in this example but the information is populated with a migration to the upload the project.
+ 
 A business rule has been added where the maximum limit of options is two.
+
 An embedded database was used (h2 https://www.h2database.com/) where it is built when uploading the project as well as the relationships between tables and primary keys and foreign keys
-To access the DB frontend, access the address http://localhost:8080/v1/h2-console/login.jsp , after project start
+
+To access the DB frontend, access the address http://localhost:8080/v1/h2-console/login.jsp , after project start.
 
   User: sa
 
@@ -21,11 +22,7 @@ To access the DB frontend, access the address http://localhost:8080/v1/h2-consol
 3) The http unit tests were created in java and are in the test \ java \ com \ mvc directory
    To run the test, clone this project and use the maven in the terminal: 
    
-   mvn test
-   
-   or  
-   
-   mvn clean install
+   mvn test   or    mvn clean install
 
 4) To run this project into containner use:
 
@@ -39,7 +36,7 @@ To access the DB frontend, access the address http://localhost:8080/v1/h2-consol
  
    
    (it is possible to run the application from the jar file, if you prefer)
-   Jar File Executable location: carsale / target / carsale-spring-1.0.0.jar
+   Jar File Executable: https://github.com/sbcmfreitas/carsale/blob/master/target/carsale-spring-1.0.0.jar
    
    Run with command:
    java -jar carsale-spring-1.0.0.jar
