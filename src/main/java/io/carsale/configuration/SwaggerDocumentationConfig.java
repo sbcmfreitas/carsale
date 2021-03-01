@@ -1,7 +1,10 @@
 package io.carsale.configuration;
 
+import java.util.ArrayList;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -20,9 +23,10 @@ public class SwaggerDocumentationConfig {
                 .select()
                     .apis(RequestHandlerSelectors.basePackage("io.carsale.api"))
                     .build()
-                .directModelSubstitute(org.threeten.bp.LocalDate.class, java.sql.Date.class)
-                .directModelSubstitute(org.threeten.bp.OffsetDateTime.class, java.util.Date.class)
+                .useDefaultResponseMessages(true)
+                .globalResponses(HttpMethod.PUT,new ArrayList<>())
                 .apiInfo(apiInfo());
+                
     }
 
     ApiInfo apiInfo() {

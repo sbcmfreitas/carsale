@@ -1,0 +1,1269 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Car Sales</title>
+    <style type="text/css">
+      body {
+      	font-family: Trebuchet MS, sans-serif;
+      	font-size: 15px;
+      	color: #444;
+      	margin-right: 24px;
+      }
+      
+      h1	{
+      	font-size: 25px;
+      }
+      h2	{
+      	font-size: 20px;
+      }
+      h3	{
+      	font-size: 16px;
+      	font-weight: bold;
+      }
+      hr	{
+      	height: 1px;
+      	border: 0;
+      	color: #ddd;
+      	background-color: #ddd;
+      }
+      
+      .app-desc {
+        clear: both;
+        margin-left: 20px;
+      }
+      .param-name {
+        width: 100%;
+      }
+      .license-info {
+        margin-left: 20px;
+      }
+      
+      .license-url {
+        margin-left: 20px;
+      }
+      
+      .model {
+        margin: 0 0 0px 20px;
+      }
+      
+      .method {
+        margin-left: 20px;
+      }
+      
+      .method-notes	{
+      	margin: 10px 0 20px 0;
+      	font-size: 90%;
+      	color: #555;
+      }
+      
+      pre {
+        padding: 10px;
+        margin-bottom: 2px;
+      }
+      
+      .http-method {
+       text-transform: uppercase;
+      }
+      
+      pre.get {
+        background-color: #0f6ab4;
+      }
+      
+      pre.post {
+        background-color: #10a54a;
+      }
+      
+      pre.put {
+        background-color: #c5862b;
+      }
+      
+      pre.delete {
+        background-color: #a41e22;
+      }
+      
+      .huge	{
+      	color: #fff;
+      }
+      
+      pre.example {
+        background-color: #f3f3f3;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      
+      code {
+        white-space: pre;
+      }
+      
+      .nickname {
+        font-weight: bold;
+      }
+      
+      .method-path {
+        font-size: 1.5em;
+        background-color: #0f6ab4;
+      }
+      
+      .up {
+        float:right;
+      }
+      
+      .parameter {
+        width: 500px;
+      }
+      
+      .param {
+        width: 500px;
+        padding: 10px 0 0 20px;
+        font-weight: bold;
+      }
+      
+      .param-desc {
+        width: 700px;
+        padding: 0 0 0 20px;
+        color: #777;
+      }
+      
+      .param-type {
+        font-style: italic;
+      }
+      
+      .param-enum-header {
+      width: 700px;
+      padding: 0 0 0 60px;
+      color: #777;
+      font-weight: bold;
+      }
+      
+      .param-enum {
+      width: 700px;
+      padding: 0 0 0 80px;
+      color: #777;
+      font-style: italic;
+      }
+      
+      .field-label {
+        padding: 0;
+        margin: 0;
+        clear: both;
+      }
+      
+      .field-items	{
+      	padding: 0 0 15px 0;
+      	margin-bottom: 15px;
+      }
+      
+      .return-type {
+        clear: both;
+        padding-bottom: 10px;
+      }
+      
+      .param-header {
+        font-weight: bold;
+      }
+      
+      .method-tags {
+        text-align: right;
+      }
+      
+      .method-tag {
+        background: none repeat scroll 0% 0% #24A600;
+        border-radius: 3px;
+        padding: 2px 10px;
+        margin: 2px;
+        color: #FFF;
+        display: inline-block;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+  <h1>Car Sales</h1>
+    <div class="app-desc">Car Sales API</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="sbc.mfreitas@outlook.com">sbc.mfreitas@outlook.com</a></div>
+    <div class="app-desc">Version: 1.0.0</div>
+    <div class="app-desc">BasePath:/v1</div>
+    <div class="license-info">All rights reserved</div>
+    <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Car">Car</a></h4>
+  <ul>
+  <li><a href="#createCarUsingPOST"><code><span class="http-method">post</span> /v1/car</code></a></li>
+  <li><a href="#deleteCarUsingDELETE"><code><span class="http-method">delete</span> /v1/car/{id}</code></a></li>
+  <li><a href="#findCarByIdUsingGET"><code><span class="http-method">get</span> /v1/car/{id}</code></a></li>
+  <li><a href="#getCarsUsingGET"><code><span class="http-method">get</span> /v1/car</code></a></li>
+  <li><a href="#updateCarUsingPUT"><code><span class="http-method">put</span> /v1/car</code></a></li>
+  </ul>
+  <h4><a href="#Client">Client</a></h4>
+  <ul>
+  <li><a href="#createClientUsingPOST"><code><span class="http-method">post</span> /v1/client</code></a></li>
+  <li><a href="#deleteClientUsingDELETE"><code><span class="http-method">delete</span> /v1/client/{id}</code></a></li>
+  <li><a href="#getClientByidUsingGET"><code><span class="http-method">get</span> /v1/client/{id}</code></a></li>
+  <li><a href="#getClientsUsingGET"><code><span class="http-method">get</span> /v1/client</code></a></li>
+  <li><a href="#updateClientUsingPUT"><code><span class="http-method">put</span> /v1/client</code></a></li>
+  </ul>
+  <h4><a href="#Order">Order</a></h4>
+  <ul>
+  <li><a href="#createOrderUsingPOST"><code><span class="http-method">post</span> /v1/order</code></a></li>
+  <li><a href="#deleteOrderUsingDELETE"><code><span class="http-method">delete</span> /v1/order/{id}</code></a></li>
+  <li><a href="#getOrderByidUsingGET"><code><span class="http-method">get</span> /v1/order/{id}</code></a></li>
+  <li><a href="#getOrdersUsingGET"><code><span class="http-method">get</span> /v1/order</code></a></li>
+  <li><a href="#updateOrderUsingPUT"><code><span class="http-method">put</span> /v1/order</code></a></li>
+  </ul>
+
+  <h1><a name="Car">Car</a></h1>
+  <div class="method"><a name="createCarUsingPOST"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /v1/car</code></pre></div>
+    <div class="method-summary">Create new Car (<span class="nickname">createCarUsingPOST</span>)</div>
+    <div class="method-notes">Create new Car</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#CarRequest">CarRequest</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#CarResponse">CarResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "options" : [ {
+    "name" : "name",
+    "id" : 1
+  }, {
+    "name" : "name",
+    "id" : 1
+  } ],
+  "id" : 6,
+  "brand" : {
+    "name" : "name",
+    "id" : 0
+  },
+  "value" : 5.962133916683182
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Created
+        <a href="#CarResponse">CarResponse</a>
+    <h4 class="field-label">400</h4>
+    Bad request
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server Error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="deleteCarUsingDELETE"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /v1/car/{id}</code></pre></div>
+    <div class="method-summary">Delete a car (<span class="nickname">deleteCarUsingDELETE</span>)</div>
+    <div class="method-notes">Delete a car</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Car id to delete format: int64</div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">204</h4>
+    No Content
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server Error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="findCarByIdUsingGET"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /v1/car/{id}</code></pre></div>
+    <div class="method-summary">Find car by ID (<span class="nickname">findCarByIdUsingGET</span>)</div>
+    <div class="method-notes">Find the car by ID</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of car to return format: int64</div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#CarResponse">CarResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "options" : [ {
+    "name" : "name",
+    "id" : 1
+  }, {
+    "name" : "name",
+    "id" : 1
+  } ],
+  "id" : 6,
+  "brand" : {
+    "name" : "name",
+    "id" : 0
+  },
+  "value" : 5.962133916683182
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#CarResponse">CarResponse</a>
+    <h4 class="field-label">400</h4>
+    Bad request
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server Error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getCarsUsingGET"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /v1/car</code></pre></div>
+    <div class="method-summary">Return a list of cars (<span class="nickname">getCarsUsingGET</span>)</div>
+    <div class="method-notes">Return a list of cars</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#CarResponse">CarResponse</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "options" : [ {
+    "name" : "name",
+    "id" : 1
+  }, {
+    "name" : "name",
+    "id" : 1
+  } ],
+  "id" : 6,
+  "brand" : {
+    "name" : "name",
+    "id" : 0
+  },
+  "value" : 5.962133916683182
+}, {
+  "options" : [ {
+    "name" : "name",
+    "id" : 1
+  }, {
+    "name" : "name",
+    "id" : 1
+  } ],
+  "id" : 6,
+  "brand" : {
+    "name" : "name",
+    "id" : 0
+  },
+  "value" : 5.962133916683182
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="updateCarUsingPUT"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /v1/car</code></pre></div>
+    <div class="method-summary">Update an existing car (<span class="nickname">updateCarUsingPUT</span>)</div>
+    <div class="method-notes">Update an existing car</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#CarRequest">CarRequest</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#CarResponse">CarResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "options" : [ {
+    "name" : "name",
+    "id" : 1
+  }, {
+    "name" : "name",
+    "id" : 1
+  } ],
+  "id" : 6,
+  "brand" : {
+    "name" : "name",
+    "id" : 0
+  },
+  "value" : 5.962133916683182
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Created
+        <a href="#CarResponse">CarResponse</a>
+    <h4 class="field-label">400</h4>
+    Bad request
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server Error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Client">Client</a></h1>
+  <div class="method"><a name="createClientUsingPOST"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /v1/client</code></pre></div>
+    <div class="method-summary">Create client (<span class="nickname">createClientUsingPOST</span>)</div>
+    <div class="method-notes">Create the client.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#ClientRequest">ClientRequest</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ClientResponse">ClientResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "phone" : "phone",
+  "id" : 0,
+  "email" : "email",
+  "Name" : "Name"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Created
+        <a href="#ClientResponse">ClientResponse</a>
+    <h4 class="field-label">400</h4>
+    Bad request
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server Error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="deleteClientUsingDELETE"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /v1/client/{id}</code></pre></div>
+    <div class="method-summary">Delete client (<span class="nickname">deleteClientUsingDELETE</span>)</div>
+    <div class="method-notes">Delete client.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The id of object to delete format: int64</div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">204</h4>
+    No Content
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server Error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getClientByidUsingGET"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /v1/client/{id}</code></pre></div>
+    <div class="method-summary">Get client by id (<span class="nickname">getClientByidUsingGET</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Get client by id format: int64</div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ClientResponse">ClientResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "phone" : "phone",
+  "id" : 0,
+  "email" : "email",
+  "Name" : "Name"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#ClientResponse">ClientResponse</a>
+    <h4 class="field-label">404</h4>
+    Not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server Error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getClientsUsingGET"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /v1/client</code></pre></div>
+    <div class="method-summary">Get clients (<span class="nickname">getClientsUsingGET</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#ClientResponse">ClientResponse</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "phone" : "phone",
+  "id" : 0,
+  "email" : "email",
+  "Name" : "Name"
+}, {
+  "phone" : "phone",
+  "id" : 0,
+  "email" : "email",
+  "Name" : "Name"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        
+    <h4 class="field-label">500</h4>
+    Internal server Error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="updateClientUsingPUT"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /v1/client</code></pre></div>
+    <div class="method-summary">Updated client (<span class="nickname">updateClientUsingPUT</span>)</div>
+    <div class="method-notes">Updated client.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#ClientRequest">ClientRequest</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ClientResponse">ClientResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "phone" : "phone",
+  "id" : 0,
+  "email" : "email",
+  "Name" : "Name"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">202</h4>
+    Accepted
+        <a href="#ClientResponse">ClientResponse</a>
+    <h4 class="field-label">400</h4>
+    Bad request
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server Error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Order">Order</a></h1>
+  <div class="method"><a name="createOrderUsingPOST"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /v1/order</code></pre></div>
+    <div class="method-summary">Create order (<span class="nickname">createOrderUsingPOST</span>)</div>
+    <div class="method-notes">Create the order.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#OrderRequest">OrderRequest</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#OrderResponse">OrderResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "car" : {
+    "options" : [ {
+      "name" : "name",
+      "id" : 1
+    }, {
+      "name" : "name",
+      "id" : 1
+    } ],
+    "id" : 6,
+    "brand" : {
+      "name" : "name",
+      "id" : 0
+    },
+    "value" : 5.962133916683182
+  },
+  "client" : {
+    "phone" : "phone",
+    "id" : 0,
+    "email" : "email",
+    "Name" : "Name"
+  },
+  "id" : 0,
+  "orderDate" : "orderDate",
+  "value" : 6.027456183070403,
+  "status" : "status"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Created
+        <a href="#OrderResponse">OrderResponse</a>
+    <h4 class="field-label">400</h4>
+    Bad request
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server Error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="deleteOrderUsingDELETE"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /v1/order/{id}</code></pre></div>
+    <div class="method-summary">Delete order (<span class="nickname">deleteOrderUsingDELETE</span>)</div>
+    <div class="method-notes">Delete order.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The id of object to delete format: int64</div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">204</h4>
+    No Content
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server Error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getOrderByidUsingGET"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /v1/order/{id}</code></pre></div>
+    <div class="method-summary">Get order by id (<span class="nickname">getOrderByidUsingGET</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Get order by id format: int64</div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#OrderResponse">OrderResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "car" : {
+    "options" : [ {
+      "name" : "name",
+      "id" : 1
+    }, {
+      "name" : "name",
+      "id" : 1
+    } ],
+    "id" : 6,
+    "brand" : {
+      "name" : "name",
+      "id" : 0
+    },
+    "value" : 5.962133916683182
+  },
+  "client" : {
+    "phone" : "phone",
+    "id" : 0,
+    "email" : "email",
+    "Name" : "Name"
+  },
+  "id" : 0,
+  "orderDate" : "orderDate",
+  "value" : 6.027456183070403,
+  "status" : "status"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#OrderResponse">OrderResponse</a>
+    <h4 class="field-label">404</h4>
+    Not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server Error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getOrdersUsingGET"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /v1/order</code></pre></div>
+    <div class="method-summary">Get orders (<span class="nickname">getOrdersUsingGET</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#OrderResponse">OrderResponse</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "car" : {
+    "options" : [ {
+      "name" : "name",
+      "id" : 1
+    }, {
+      "name" : "name",
+      "id" : 1
+    } ],
+    "id" : 6,
+    "brand" : {
+      "name" : "name",
+      "id" : 0
+    },
+    "value" : 5.962133916683182
+  },
+  "client" : {
+    "phone" : "phone",
+    "id" : 0,
+    "email" : "email",
+    "Name" : "Name"
+  },
+  "id" : 0,
+  "orderDate" : "orderDate",
+  "value" : 6.027456183070403,
+  "status" : "status"
+}, {
+  "car" : {
+    "options" : [ {
+      "name" : "name",
+      "id" : 1
+    }, {
+      "name" : "name",
+      "id" : 1
+    } ],
+    "id" : 6,
+    "brand" : {
+      "name" : "name",
+      "id" : 0
+    },
+    "value" : 5.962133916683182
+  },
+  "client" : {
+    "phone" : "phone",
+    "id" : 0,
+    "email" : "email",
+    "Name" : "Name"
+  },
+  "id" : 0,
+  "orderDate" : "orderDate",
+  "value" : 6.027456183070403,
+  "status" : "status"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        
+    <h4 class="field-label">500</h4>
+    Internal server Error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="updateOrderUsingPUT"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /v1/order</code></pre></div>
+    <div class="method-summary">Updated order (<span class="nickname">updateOrderUsingPUT</span>)</div>
+    <div class="method-notes">Updated order.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#OrderRequest">OrderRequest</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#OrderResponse">OrderResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "car" : {
+    "options" : [ {
+      "name" : "name",
+      "id" : 1
+    }, {
+      "name" : "name",
+      "id" : 1
+    } ],
+    "id" : 6,
+    "brand" : {
+      "name" : "name",
+      "id" : 0
+    },
+    "value" : 5.962133916683182
+  },
+  "client" : {
+    "phone" : "phone",
+    "id" : 0,
+    "email" : "email",
+    "Name" : "Name"
+  },
+  "id" : 0,
+  "orderDate" : "orderDate",
+  "value" : 6.027456183070403,
+  "status" : "status"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>*/*</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">202</h4>
+    Accepted
+        <a href="#OrderResponse">OrderResponse</a>
+    <h4 class="field-label">400</h4>
+    Bad request
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server Error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#BrandResponse"><code>BrandResponse</code> - BrandResponse</a></li>
+    <li><a href="#CarRequest"><code>CarRequest</code> - CarRequest</a></li>
+    <li><a href="#CarResponse"><code>CarResponse</code> - CarResponse</a></li>
+    <li><a href="#ClientRequest"><code>ClientRequest</code> - ClientRequest</a></li>
+    <li><a href="#ClientResponse"><code>ClientResponse</code> - ClientResponse</a></li>
+    <li><a href="#OptionResponse"><code>OptionResponse</code> - OptionResponse</a></li>
+    <li><a href="#OrderRequest"><code>OrderRequest</code> - OrderRequest</a></li>
+    <li><a href="#OrderResponse"><code>OrderResponse</code> - OrderResponse</a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="BrandResponse"><code>BrandResponse</code> - BrandResponse</a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="CarRequest"><code>CarRequest</code> - CarRequest</a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">brandId </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">optionIds </div><div class="param-desc"><span class="param-type"><a href="#long">array[Long]</a></span>  format: int64</div>
+<div class="param">value </div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  format: bigdecimal</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="CarResponse"><code>CarResponse</code> - CarResponse</a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">brand (optional)</div><div class="param-desc"><span class="param-type"><a href="#BrandResponse">BrandResponse</a></span>  </div>
+<div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">options </div><div class="param-desc"><span class="param-type"><a href="#OptionResponse">array[OptionResponse]</a></span>  </div>
+<div class="param">value </div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  format: bigdecimal</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ClientRequest"><code>ClientRequest</code> - ClientRequest</a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">email </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">firstName </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">lastName </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">phone </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ClientResponse"><code>ClientResponse</code> - ClientResponse</a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">Name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">email </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">phone </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="OptionResponse"><code>OptionResponse</code> - OptionResponse</a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="OrderRequest"><code>OrderRequest</code> - OrderRequest</a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">CarId </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">ClientId </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">orderDate </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+<div class="param">status </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Order Status </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">canceled</div><div class="param-enum">delivered</div><div class="param-enum">paid</div><div class="param-enum">placed</div>
+<div class="param">value </div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  format: bigdecimal</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="OrderResponse"><code>OrderResponse</code> - OrderResponse</a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">car </div><div class="param-desc"><span class="param-type"><a href="#CarResponse">CarResponse</a></span>  </div>
+<div class="param">client </div><div class="param-desc"><span class="param-type"><a href="#ClientResponse">ClientResponse</a></span>  </div>
+<div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">orderDate </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">status </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">value </div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  format: bigdecimal</div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>

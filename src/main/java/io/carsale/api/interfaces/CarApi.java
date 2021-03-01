@@ -21,7 +21,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
-
 public interface CarApi {
 
     @Operation(summary = "Create new Car", description = "Create new Car", tags={ "Car" })
@@ -29,6 +28,7 @@ public interface CarApi {
         @ApiResponse(responseCode = "201", description = "Created", content = @Content(schema = @Schema(implementation = CarResponse.class))),      
         @ApiResponse(responseCode = "400", description = "Bad request"),
         @ApiResponse(responseCode = "500", description = "Internal server Error") })
+        
     @RequestMapping(value = "/car",
         produces = { "application/json" }, 
         consumes = { "application/json" }, 
