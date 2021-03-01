@@ -3,6 +3,10 @@ CarSale
 
 1) Open API 3.0 Doc
 
+Doc: carsale / openApiDoc
+
+Or
+
 http://localhost:8080/v1/swagger-ui/#/
    
 2) This project was created with Spring Framework 2.1.16 to simulate a car sale, where the Customer, Car and Order information have endpoints to be    invoked, other additional information like Brand and Options were not created in this example but the information is populated with a migration to the upload the project.
