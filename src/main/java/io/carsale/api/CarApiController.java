@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.carsale.api.interfaces.CarApi;
 import io.carsale.dto.CarRequest;
 import io.carsale.dto.CarResponse;
+import io.carsale.exception.OptionQuantityRestrictionException;
 import io.carsale.model.Car;
 import io.carsale.service.interfaces.CarService;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -43,7 +44,7 @@ public class CarApiController implements CarApi {
 
             return new ResponseEntity<CarResponse>(carResponse, HttpStatus.CREATED);
 
-        }catch (JpaObjectRetrievalFailureException|DataIntegrityViolationException e) {
+        }catch (OptionQuantityRestrictionException|JpaObjectRetrievalFailureException|DataIntegrityViolationException e) {
 
             return new ResponseEntity<CarResponse>(HttpStatus.BAD_REQUEST);
 
@@ -70,7 +71,7 @@ public class CarApiController implements CarApi {
 
             return new ResponseEntity<CarResponse>(HttpStatus.NOT_FOUND);
             
-        }catch (JpaObjectRetrievalFailureException|DataIntegrityViolationException e) {
+        }catch (OptionQuantityRestrictionException|JpaObjectRetrievalFailureException|DataIntegrityViolationException e) {
 
             return new ResponseEntity<CarResponse>(HttpStatus.BAD_REQUEST);
 

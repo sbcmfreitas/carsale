@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import io.carsale.adapter.CarResponseAdapter;
 import io.carsale.dto.CarResponse;
+import io.carsale.exception.OptionQuantityRestrictionException;
 import io.carsale.model.Car;
 import io.carsale.repository.interfaces.CarRespository;
 import io.carsale.service.interfaces.CarService;
@@ -24,8 +25,14 @@ public class CarServiceImpl implements CarService {
 	@Autowired
 	private CarRespository carRepository;
 
+	private static final String LIMIT_MESSAGE = "Limit of 2 options has been exceeded";
+
 	@Override
-	public CarResponse create(Car car) {
+	public CarResponse create(Car car) throws OptionQuantityRestrictionException {
+
+		if(car.getOptions().size()>2){
+			throw new OptionQuantityRestrictionException(1,LIMIT_MESSAGE);
+		}
 
 		carRepository.save(car);
 
@@ -33,7 +40,11 @@ public class CarServiceImpl implements CarService {
 	}
 
 	@Override
-	public CarResponse update(Car car) {
+	public CarResponse update(Car car) throws OptionQuantityRestrictionException{
+
+		if(car.getOptions().size()>2){
+			throw new OptionQuantityRestrictionException(1,LIMIT_MESSAGE);
+		}
 
 		CarResponse carResponse = this.find(car.getId());
 

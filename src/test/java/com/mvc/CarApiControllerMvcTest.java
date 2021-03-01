@@ -37,6 +37,7 @@ import io.carsale.CarSaleSpringBootApi;
 import io.carsale.api.CarApiController;
 import io.carsale.dto.CarRequest;
 import io.carsale.dto.CarResponse;
+import io.carsale.exception.OptionQuantityRestrictionException;
 import io.carsale.model.Car;
 import io.carsale.repository.ClientRespositoryImpl;
 import io.carsale.repository.OrderRespositoryImpl;
@@ -254,6 +255,25 @@ public class CarApiControllerMvcTest {
 	}
 
 
+	@Test
+	public void CreateCar_InvalidNumberOfOptions_ShouldBeReturnBadRequest() throws Exception {
+
+		// asset
+		CarRequest carRequest= this.fixture.create(CarRequest.class);
+		
+        when(this.carService.create(any(Car.class))).thenThrow(new OptionQuantityRestrictionException(1,"Option Quantity Exception"));
+
+		// when
+		this.mockMvc.perform(
+						  post("/car")
+						 .contentType(MediaType.APPLICATION_JSON)
+						 .content(objectMapper.writeValueAsString(carRequest))
+				)
+	            .andExpect(MockMvcResultMatchers.status().isBadRequest())
+	            .andReturn();
+	}
+
+
 	/**
      * UpdateCar
      **/
@@ -334,6 +354,24 @@ public class CarApiControllerMvcTest {
 						 .content(objectMapper.writeValueAsString(carRequest))
 				)
 	            .andExpect(MockMvcResultMatchers.status().isInternalServerError())
+	            .andReturn();
+	}
+
+	@Test
+	public void UpdateCar_InvalidNumberOfOptions_ShouldBeReturnBadRequest() throws Exception {
+
+		// asset
+		CarRequest carRequest= this.fixture.create(CarRequest.class);
+		
+        when(this.carService.update(any(Car.class))).thenThrow(new OptionQuantityRestrictionException(1,"Option Quantity Exception"));
+
+		// when
+		this.mockMvc.perform(
+						  put("/car")
+						 .contentType(MediaType.APPLICATION_JSON)
+						 .content(objectMapper.writeValueAsString(carRequest))
+				)
+	            .andExpect(MockMvcResultMatchers.status().isBadRequest())
 	            .andReturn();
 	}
 
