@@ -15,6 +15,7 @@ C:\GIT\CarSale\src\main\java\io\carsale\api\OrderApiController.java
 C:\GIT\CarSale\src\main\java\io\carsale\dto\BrandResponse.java
 C:\GIT\CarSale\src\main\java\io\carsale\configuration\CustomInstantDeserializer.java
 C:\GIT\CarSale\src\main\java\io\carsale\repository\interfaces\ClientRespository.java
+C:\GIT\CarSale\src\main\java\io\carsale\exception\NotFoundException.java
 C:\GIT\CarSale\src\main\java\io\carsale\CarSaleSpringBootApi.java
 C:\GIT\CarSale\src\main\java\io\carsale\configuration\JacksonConfiguration.java
 C:\GIT\CarSale\src\main\java\io\carsale\model\Car.java
@@ -30,7 +31,7 @@ C:\GIT\CarSale\src\main\java\io\carsale\repository\interfaces\CarRespository.jav
 C:\GIT\CarSale\src\main\java\io\carsale\api\interfaces\OrderApi.java
 C:\GIT\CarSale\src\main\java\io\carsale\model\Order.java
 C:\GIT\CarSale\src\main\java\io\carsale\configuration\ApiResponseMessage.java
-C:\GIT\CarSale\src\main\java\io\carsale\configuration\NotFoundException.java
+C:\GIT\CarSale\src\main\java\io\carsale\exception\OptionQuantityRestrictionException.java
 C:\GIT\CarSale\src\main\java\io\carsale\api\ClientApiController.java
 C:\GIT\CarSale\src\main\java\io\carsale\configuration\RFC3339DateFormat.java
 C:\GIT\CarSale\src\main\java\io\carsale\repository\BrandRespositoryImpl.java

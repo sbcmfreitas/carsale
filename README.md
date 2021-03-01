@@ -5,7 +5,8 @@ CarSale
 
 http://localhost:8080/v1/swagger-ui/#/
    
-2) This project was created with Spring Framework to simulate a car sale, where the Customer, Car and Order information have endpoints to be    invoked, other additional information like Brand and Options were not created in this example but the information is populated with a migration to the upload the project.
+2) This project was created with Spring Framework 2.1.16 to simulate a car sale, where the Customer, Car and Order information have endpoints to be    invoked, other additional information like Brand and Options were not created in this example but the information is populated with a migration to the upload the project.
+A business rule has been added where the maximum limit of options is two.
 An embedded database was used (h2 https://www.h2database.com/) where it is built when uploading the project as well as the relationships between tables and primary keys and foreign keys
 To access the DB frontend, access the address http://localhost:8080/v1/h2-console/login.jsp , after project start
 
@@ -25,18 +26,13 @@ To access the DB frontend, access the address http://localhost:8080/v1/h2-consol
 4) To run this project into containner use:
 
    Docker container:   
-   Docker Hub: 
    
    docker pull masrcosrfreitas/carsale:version1
 
-   docker run -p 8080:8080 --name spring masrcosrfreitas/carsale:version1 
+   docker run -p 8080:8080 --name carsale masrcosrfreitas/carsale:version1
 
    https://hub.docker.com/layers/139391986/masrcosrfreitas/carsale/version1/images/sha256-14376733235b666120b2ce1b3aaa2670af531a8045e859daa3b54ca620a28153?context=explore		   
  
-   (In case of problems)   
-   Image file: https://drive.google.com/file/d/1ftykbktEjxsXcwT6sg7vTXKMFnghd4TM/view?usp=sharing (dockerContainerCarSaleAppSpring.tar)
-   To Restore image into docker: docker load -i <filepath>.tar
-   Run Docker container: docker run -t 8080:8080 spring 
    
    (it is possible to run the application from the jar file, if you prefer)
    Jar File Executable location: carsale / target / carsale-spring-1.0.0.jar

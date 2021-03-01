@@ -5,8 +5,8 @@ io\carsale\configuration\CustomInstantDeserializer$8.class
 io\carsale\dto\OrderResponse.class
 io\carsale\adapter\OrderResponseAdapter.class
 io\carsale\model\Option.class
+io\carsale\exception\OptionQuantityRestrictionException.class
 io\carsale\api\ClientApiController.class
-io\carsale\configuration\NotFoundException.class
 io\carsale\dto\CarResponse.class
 io\carsale\adapter\CarResponseAdapter.class
 io\carsale\configuration\CustomInstantDeserializer$5.class
@@ -62,6 +62,7 @@ io\carsale\configuration\CustomInstantDeserializer$4.class
 io\carsale\service\OrderServiceImpl.class
 io\carsale\enums\StatusEnum.class
 io\carsale\api\interfaces\CarApi.class
+io\carsale\exception\NotFoundException.class
 io\carsale\model\Order.class
 io\carsale\repository\interfaces\BrandRespository.class
 io\carsale\service\interfaces\CarService.class
