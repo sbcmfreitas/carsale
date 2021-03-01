@@ -13,13 +13,16 @@ https://github.com/sbcmfreitas/carsale/blob/master/openApiDoc/openapi.yaml
  
 A business rule has been added where the maximum limit of options is two.
 
-An embedded database was used (h2 https://www.h2database.com/) where it is built when uploading the project as well as the relationships between tables and primary keys and foreign keys
+An embedded database was used (h2) where it is built when uploading the project as well as the relationships between tables and primary keys and foreign keys
 
 To access the DB frontend, access the address http://localhost:8080/v1/h2-console/login.jsp , after project start.
 
   User: sa
 
   Pwd: password
+  
+  
+  H2 More info: https://www.h2database.com/
   
   
 
