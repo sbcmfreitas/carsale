@@ -50,9 +50,22 @@ To access the DB frontend, access the address http://localhost:8080/v1/h2-consol
    
    
    
- 5) TODO
+ 5) Among the experiences I had with blocking transactions, the first case was the need for a sql query that involved a large volume of data
+and at the same time a lot of new information was still inserted and updated, for issuing reports with a lot of information for South America.
+
+We chose to adopt the following measures, in order to minimize problems with locks in migration:
  
- 6) DONE
+Adopt a consultation timeout.
+
+Adopt associated connections, where it allows a customer with multiple connections to link them to a single transaction space, so the connections are not blocked.
+
+Schedules were also adopted where there was little use for executing large INSERT, UPDATE or DELETE batches. (Operations that block records)
+
+Use of Materialized Views for historical data and some occasions.
+
+Create a script for monitoring locks and query execution time for reporting and analysis.
+ 
+ 6) Sent
    
    
    
