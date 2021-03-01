@@ -6,6 +6,8 @@ CarSale
 	Doc: carsale / openApiDoc
 
 	https://github.com/sbcmfreitas/carsale/blob/master/openApiDoc/openapi.yaml
+	
+	http://localhost:8080/v1/swagger-ui/ ( Run project )
 
 
    
