@@ -124,20 +124,6 @@ public class OrderApiControllerMvcTest {
 		assertEquals(orderResponseListMock.stream().findFirst().get().getId(),orderResponseList.stream().findFirst().get().getId());
 	}
 
-	@Test
-	public void GetOrders_NoneParameters_ShouldBeReturnInternalServerError() throws Exception {
-
-		// asset
-        when(orderService.findAll()).thenThrow(new ArrayIndexOutOfBoundsException());
-
-		// when
-		mockMvc.perform(get("/order")
-		        .accept(MediaType.APPLICATION_JSON))
-				.andExpect(MockMvcResultMatchers.status().isInternalServerError())
-				.andReturn();
-	}
-
-
 	/**
      * FindOrderById
      **/
@@ -176,19 +162,6 @@ public class OrderApiControllerMvcTest {
 
 	}
 
-	@Test
-	public void FindOrderById_NotExistIdParameter_ShouldBeReturnInternalServerErrorStatus() throws Exception {
-
-		// asset
-        when(orderService.find(any(Long.class))).thenThrow(new ArrayIndexOutOfBoundsException());
-
-		// when
-		mockMvc.perform(get("/order/1")
-		        .accept(MediaType.APPLICATION_JSON))
-				.andExpect(MockMvcResultMatchers.status().isInternalServerError())
-				.andReturn();
-
-	}
 
 
 	/**
@@ -239,23 +212,6 @@ public class OrderApiControllerMvcTest {
 	            .andReturn();
 	}
 
-	@Test
-	public void CreateOrder_ValidParameters_ShouldBeReturnInternalServerError() throws Exception {
-
-		// asset
-		OrderRequest orderRequest= this.fixture.create(OrderRequest.class);
-		
-        when(this.orderService.create(any(Order.class))).thenThrow(new RuntimeException());
-
-		// when
-		this.mockMvc.perform(
-						  post("/order")
-						 .contentType(MediaType.APPLICATION_JSON)
-						 .content(objectMapper.writeValueAsString(orderRequest))
-				)
-	            .andExpect(MockMvcResultMatchers.status().isInternalServerError())
-	            .andReturn();
-	}
 
 
 	/**
@@ -323,24 +279,6 @@ public class OrderApiControllerMvcTest {
 	            .andReturn();
 	}
 
-	@Test
-	public void UpdateOrder_ValidParameters_ShouldBeReturnInternalServerError() throws Exception {
-
-		// asset
-		OrderRequest orderRequest= this.fixture.create(OrderRequest.class);
-		
-        when(this.orderService.update(any(Order.class))).thenThrow(new RuntimeException("Exception"));
-
-		// when
-		this.mockMvc.perform(
-						  put("/order")
-						 .contentType(MediaType.APPLICATION_JSON)
-						 .content(objectMapper.writeValueAsString(orderRequest))
-				)
-	            .andExpect(MockMvcResultMatchers.status().isInternalServerError())
-	            .andReturn();
-	}
-
 	/**
      * DeleteOrder
      **/
@@ -389,20 +327,5 @@ public class OrderApiControllerMvcTest {
 	            .andReturn();
 	}
 
-	@Test
-	public void DeleteOrder_ValidParameters_ShouldBeReturnInternalServerError() throws Exception {
 
-		// asset		
-        when(this.orderService.delete(any(Long.class))).thenThrow(new ArrayIndexOutOfBoundsException());
-
-		// when
-		this.mockMvc.perform(
-						  delete("/order/1")
-						 .contentType(MediaType.APPLICATION_JSON)
-				)
-	            .andExpect(MockMvcResultMatchers.status().isInternalServerError())
-	            .andReturn();
-	}
-
-	
 }

@@ -22,7 +22,6 @@ io\carsale\service\CarServiceImpl.class
 io\carsale\dto\CarRequest.class
 io\carsale\configuration\CustomInstantDeserializer$9.class
 io\carsale\api\CarApiController.class
-io\carsale\configuration\ApiException.class
 io\carsale\model\Car.class
 io\carsale\repository\AbstractRepository.class
 io\carsale\repository\interfaces\OrderRespository.class
@@ -41,6 +40,7 @@ io\carsale\dto\ClientResponse.class
 io\carsale\repository\CarRespositoryImpl.class
 io\carsale\configuration\CustomInstantDeserializer$10.class
 io\carsale\configuration\SwaggerDocumentationConfig.class
+io\carsale\exception\ApiException.class
 io\carsale\configuration\CustomInstantDeserializer$FromDecimalArguments.class
 io\carsale\dto\OptionResponse.class
 io\carsale\configuration\ApiOriginFilter.class
@@ -56,7 +56,6 @@ io\carsale\dto\OrderRequest.class
 io\carsale\service\interfaces\BrandService.class
 io\carsale\configuration\CustomInstantDeserializer$7.class
 io\carsale\repository\OrderRespositoryImpl.class
-io\carsale\model\ModelApiResponse.class
 io\carsale\adapter\ClientResponseAdapter.class
 io\carsale\configuration\CustomInstantDeserializer$4.class
 io\carsale\service\OrderServiceImpl.class

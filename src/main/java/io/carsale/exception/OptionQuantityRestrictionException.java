@@ -1,7 +1,5 @@
 package io.carsale.exception;
 
-import io.carsale.configuration.ApiException;
-
 public class OptionQuantityRestrictionException extends ApiException {
 
     private static final long serialVersionUID = -8000903005649088468L;

@@ -47,10 +47,9 @@ public class OrderApiController implements OrderApi {
 
             return new ResponseEntity<OrderResponse>(HttpStatus.BAD_REQUEST);
 
-        } catch (Exception e) {
+        }catch (Exception e) {
 
-            log.error("Couldn't serialize response for content type application/json", e);
-            return new ResponseEntity<OrderResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            throw e;
 
         }
     }
@@ -75,8 +74,7 @@ public class OrderApiController implements OrderApi {
 
         }catch (Exception e) {
 
-            log.error("Couldn't serialize response for content type application/json", e);
-            return new ResponseEntity<OrderResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            throw e;
 
         }
 
@@ -98,8 +96,7 @@ public class OrderApiController implements OrderApi {
 
         }catch (Exception e) {
 
-            log.error("Couldn't serialize response for content type application/json", e);
-            return new ResponseEntity<OrderResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            throw e;
 
         }
 
@@ -112,10 +109,9 @@ public class OrderApiController implements OrderApi {
             List<OrderResponse> orders = this.orderService.findAll();
             return new ResponseEntity<List<OrderResponse>>(orders, HttpStatus.OK);
                 
-        } catch (Exception e) {
+        }catch (Exception e) {
 
-            log.error("Couldn't serialize response for content type application/json", e);
-            return new ResponseEntity<List<OrderResponse>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            throw e;
 
         }
     }
@@ -138,8 +134,7 @@ public class OrderApiController implements OrderApi {
 
         }catch (Exception e) {
 
-            log.error("Couldn't serialize response for content type application/json", e);
-            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+            throw e;
 
         }
 

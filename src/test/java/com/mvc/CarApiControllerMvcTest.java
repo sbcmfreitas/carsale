@@ -121,19 +121,6 @@ public class CarApiControllerMvcTest {
 		assertEquals(carResponseListMock.stream().findFirst().get().getId(),carResponseList.stream().findFirst().get().getId());
 	}
 
-	@Test
-	public void GetCars_NoneParameters_ShouldBeReturnInternalServerError() throws Exception {
-
-		// asset
-        when(carService.findAll()).thenThrow(new ArrayIndexOutOfBoundsException());
-
-		// when
-		mockMvc.perform(get("/car")
-		        .accept(MediaType.APPLICATION_JSON))
-				.andExpect(MockMvcResultMatchers.status().isInternalServerError())
-				.andReturn();
-	}
-
 
 	/**
      * FindCarById
@@ -169,20 +156,6 @@ public class CarApiControllerMvcTest {
 		mockMvc.perform(get("/car/1")
 		        .accept(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers.status().isNotFound())
-				.andReturn();
-
-	}
-
-	@Test
-	public void FindCarById_NotExistIdParameter_ShouldBeReturnInternalServerErrorStatus() throws Exception {
-
-		// asset
-        when(carService.find(any(Long.class))).thenThrow(new ArrayIndexOutOfBoundsException());
-
-		// when
-		mockMvc.perform(get("/car/1")
-		        .accept(MediaType.APPLICATION_JSON))
-				.andExpect(MockMvcResultMatchers.status().isInternalServerError())
 				.andReturn();
 
 	}
@@ -233,24 +206,6 @@ public class CarApiControllerMvcTest {
 						 .content(objectMapper.writeValueAsString(carRequest))
 				)
 	            .andExpect(MockMvcResultMatchers.status().isBadRequest())
-	            .andReturn();
-	}
-
-	@Test
-	public void CreateCar_ValidParameters_ShouldBeReturnInternalServerError() throws Exception {
-
-		// asset
-		CarRequest carRequest= this.fixture.create(CarRequest.class);
-		
-        when(this.carService.create(any(Car.class))).thenThrow(new RuntimeException());
-
-		// when
-		this.mockMvc.perform(
-						  post("/car")
-						 .contentType(MediaType.APPLICATION_JSON)
-						 .content(objectMapper.writeValueAsString(carRequest))
-				)
-	            .andExpect(MockMvcResultMatchers.status().isInternalServerError())
 	            .andReturn();
 	}
 
@@ -339,23 +294,6 @@ public class CarApiControllerMvcTest {
 	            .andReturn();
 	}
 
-	@Test
-	public void UpdateCar_ValidParameters_ShouldBeReturnInternalServerError() throws Exception {
-
-		// asset
-		CarRequest carRequest= this.fixture.create(CarRequest.class);
-		
-        when(this.carService.update(any(Car.class))).thenThrow(new RuntimeException("Exception"));
-
-		// when
-		this.mockMvc.perform(
-						  put("/car")
-						 .contentType(MediaType.APPLICATION_JSON)
-						 .content(objectMapper.writeValueAsString(carRequest))
-				)
-	            .andExpect(MockMvcResultMatchers.status().isInternalServerError())
-	            .andReturn();
-	}
 
 	@Test
 	public void UpdateCar_InvalidNumberOfOptions_ShouldBeReturnBadRequest() throws Exception {
@@ -393,20 +331,6 @@ public class CarApiControllerMvcTest {
 	            .andReturn();
 	}
 
-	@Test
-	public void DeleteCar_AnyParameters_ShouldBeReturnInternalServerError() throws Exception {
-
-		// asset	
-        when(this.carService.delete(any(Long.class))).thenReturn(false);
-
-		// when
-		this.mockMvc.perform(
-						  delete("/car/1")
-						 .contentType(MediaType.APPLICATION_JSON)
-				)
-	            .andExpect(MockMvcResultMatchers.status().isInternalServerError())
-	            .andReturn();
-	}
 
 	@Test
 	public void DeleteCar_NotExistCarIdParameter_ShouldBeReturnNotFoundStatus() throws Exception {
@@ -420,21 +344,6 @@ public class CarApiControllerMvcTest {
 						 .contentType(MediaType.APPLICATION_JSON)
 				)
 	            .andExpect(MockMvcResultMatchers.status().isNotFound())
-	            .andReturn();
-	}
-
-	@Test
-	public void DeleteCar_ValidParameters_ShouldBeReturnInternalServerError() throws Exception {
-
-		// asset		
-        when(this.carService.delete(any(Long.class))).thenThrow(new ArrayIndexOutOfBoundsException());
-
-		// when
-		this.mockMvc.perform(
-						  delete("/car/1")
-						 .contentType(MediaType.APPLICATION_JSON)
-				)
-	            .andExpect(MockMvcResultMatchers.status().isInternalServerError())
 	            .andReturn();
 	}
 

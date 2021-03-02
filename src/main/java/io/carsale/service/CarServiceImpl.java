@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import io.carsale.adapter.CarResponseAdapter;
 import io.carsale.dto.CarResponse;
 import io.carsale.exception.OptionQuantityRestrictionException;

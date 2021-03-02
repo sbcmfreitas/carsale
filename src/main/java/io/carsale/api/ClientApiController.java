@@ -47,10 +47,9 @@ public class ClientApiController implements ClientApi {
 
             return new ResponseEntity<ClientResponse>(HttpStatus.BAD_REQUEST);
 
-        } catch (Exception e) {
+        }catch (Exception e) {
 
-            log.error("Couldn't serialize response for content type application/json", e);
-            return new ResponseEntity<ClientResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            throw e;
 
         }
     }
@@ -75,8 +74,7 @@ public class ClientApiController implements ClientApi {
 
         }catch (Exception e) {
 
-            log.error("Couldn't serialize response for content type application/json", e);
-            return new ResponseEntity<ClientResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            throw e;
 
         }
 
@@ -92,17 +90,15 @@ public class ClientApiController implements ClientApi {
 
             return new ResponseEntity<ClientResponse>(clientResponse,HttpStatus.OK);
 
-        } catch (JpaObjectRetrievalFailureException|EntityNotFoundException e) {
+        }catch (JpaObjectRetrievalFailureException|EntityNotFoundException e) {
 
             return new ResponseEntity<ClientResponse>(HttpStatus.NOT_FOUND);
 
         }catch (Exception e) {
 
-            log.error("Couldn't serialize response for content type application/json", e);
-            return new ResponseEntity<ClientResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            throw e;
 
         }
-
     }
 
     public ResponseEntity<List<ClientResponse>> getClients() {
@@ -112,10 +108,9 @@ public class ClientApiController implements ClientApi {
             List<ClientResponse> clients = this.clientService.findAll();
             return new ResponseEntity<List<ClientResponse>>(clients, HttpStatus.OK);
                 
-        } catch (Exception e) {
+        }catch (Exception e) {
 
-            log.error("Couldn't serialize response for content type application/json", e);
-            return new ResponseEntity<List<ClientResponse>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            throw e;
 
         }
     }
@@ -139,8 +134,7 @@ public class ClientApiController implements ClientApi {
 
         }catch (Exception e) {
 
-            log.error("Couldn't serialize response for content type application/json", e);
-            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+            throw e;
 
         }
 

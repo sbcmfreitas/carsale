@@ -3,7 +3,6 @@ C:\GIT\CarSale\src\main\java\io\carsale\configuration\SwaggerUiConfiguration.jav
 C:\GIT\CarSale\src\main\java\io\carsale\enums\StatusEnum.java
 C:\GIT\CarSale\src\main\java\io\carsale\adapter\ClientResponseAdapter.java
 C:\GIT\CarSale\src\main\java\io\carsale\configuration\SwaggerDocumentationConfig.java
-C:\GIT\CarSale\src\main\java\io\carsale\configuration\ApiException.java
 C:\GIT\CarSale\src\main\java\io\carsale\api\interfaces\ClientApi.java
 C:\GIT\CarSale\src\main\java\io\carsale\dto\OptionResponse.java
 C:\GIT\CarSale\src\main\java\io\carsale\model\Option.java
@@ -30,6 +29,7 @@ C:\GIT\CarSale\src\main\java\io\carsale\configuration\HomeController.java
 C:\GIT\CarSale\src\main\java\io\carsale\repository\interfaces\CarRespository.java
 C:\GIT\CarSale\src\main\java\io\carsale\api\interfaces\OrderApi.java
 C:\GIT\CarSale\src\main\java\io\carsale\model\Order.java
+C:\GIT\CarSale\src\main\java\io\carsale\exception\ApiException.java
 C:\GIT\CarSale\src\main\java\io\carsale\configuration\ApiResponseMessage.java
 C:\GIT\CarSale\src\main\java\io\carsale\exception\OptionQuantityRestrictionException.java
 C:\GIT\CarSale\src\main\java\io\carsale\api\ClientApiController.java
@@ -37,7 +37,6 @@ C:\GIT\CarSale\src\main\java\io\carsale\configuration\RFC3339DateFormat.java
 C:\GIT\CarSale\src\main\java\io\carsale\repository\BrandRespositoryImpl.java
 C:\GIT\CarSale\src\main\java\io\carsale\service\CarServiceImpl.java
 C:\GIT\CarSale\src\main\java\io\carsale\configuration\ApiOriginFilter.java
-C:\GIT\CarSale\src\main\java\io\carsale\model\ModelApiResponse.java
 C:\GIT\CarSale\src\main\java\io\carsale\repository\CarRespositoryImpl.java
 C:\GIT\CarSale\src\main\java\io\carsale\repository\interfaces\BrandRespository.java
 C:\GIT\CarSale\src\main\java\io\carsale\repository\AbstractRepository.java

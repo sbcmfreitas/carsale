@@ -1,6 +1,5 @@
 package io.carsale.exception;
 
-import io.carsale.configuration.ApiException;
 
 public class NotFoundException extends ApiException {
 

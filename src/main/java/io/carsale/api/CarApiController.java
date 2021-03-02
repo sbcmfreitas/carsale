@@ -36,7 +36,7 @@ public class CarApiController implements CarApi {
 
     public ResponseEntity<CarResponse> createCar(
         @Parameter(in = ParameterIn.DEFAULT, description = "Car object that needs to be added to the store", required=true, schema=@Schema()) 
-        @Valid @RequestBody CarRequest carRequest) {
+        @Valid @RequestBody CarRequest carRequest) throws Exception {
         
         try {
 
@@ -50,8 +50,7 @@ public class CarApiController implements CarApi {
 
         } catch (Exception e) {
 
-            log.error("Couldn't serialize response for content type application/json", e);
-            return new ResponseEntity<CarResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            throw e;
 
         }
 
@@ -75,10 +74,9 @@ public class CarApiController implements CarApi {
 
             return new ResponseEntity<CarResponse>(HttpStatus.BAD_REQUEST);
 
-        }catch (Exception e) {
+        } catch (Exception e) {
 
-            log.error("Couldn't serialize response for content type application/json", e);
-            return new ResponseEntity<CarResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            throw e;
 
         }
 
@@ -100,10 +98,9 @@ public class CarApiController implements CarApi {
 
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 
-        }catch (Exception e) {
+        } catch (Exception e) {
 
-            log.error("Couldn't serialize response for content type application/json", e);
-            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+            throw e;
 
         }
 
@@ -124,10 +121,9 @@ public class CarApiController implements CarApi {
 
             return new ResponseEntity<CarResponse>(HttpStatus.NOT_FOUND);
 
-        }catch (Exception e) {
+        } catch (Exception e) {
 
-            log.error("Couldn't serialize response for content type application/json", e);
-            return new ResponseEntity<CarResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            throw e;
 
         }
        
@@ -142,8 +138,7 @@ public class CarApiController implements CarApi {
                 
         } catch (Exception e) {
 
-            log.error("Couldn't serialize response for content type application/json", e);
-            return new ResponseEntity<List<CarResponse>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            throw e;
 
         }
 

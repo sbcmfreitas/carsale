@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import io.carsale.dto.CarRequest;
 import io.carsale.dto.CarResponse;
+import io.carsale.exception.ApiException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -27,7 +28,7 @@ public interface CarApi {
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "201", description = "Created", content = @Content(schema = @Schema(implementation = CarResponse.class))),      
         @ApiResponse(responseCode = "400", description = "Bad request"),
-        @ApiResponse(responseCode = "500", description = "Internal server Error") })
+        @ApiResponse(responseCode = "500", description = "Internal server Error", content = @Content(schema = @Schema(implementation = ApiException.class))) })
         
     @RequestMapping(value = "/car",
         produces = { "application/json" }, 
@@ -35,7 +36,7 @@ public interface CarApi {
         method = RequestMethod.POST)
     ResponseEntity<CarResponse> createCar(
         @Parameter(in = ParameterIn.DEFAULT, description = "Car object that needs to be added to the store", required=true, schema=@Schema())
-        @Valid @RequestBody CarRequest body);
+        @Valid @RequestBody CarRequest body) throws Exception;
 
 
     @Operation(summary = "Update an existing car", description = "Update an existing car", tags={ "Car" })
@@ -58,6 +59,7 @@ public interface CarApi {
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "204", description = "No Content"),   
         @ApiResponse(responseCode = "404", description = "Not found"),  
+        @ApiResponse(responseCode = "409", description = "Conflict"),
         @ApiResponse(responseCode = "500", description = "Internal server Error") })
     @RequestMapping(value = "/car/{id}", method = RequestMethod.DELETE)
     ResponseEntity<Void> deleteCar(

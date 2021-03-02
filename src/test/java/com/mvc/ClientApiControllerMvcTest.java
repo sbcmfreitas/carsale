@@ -120,19 +120,6 @@ public class ClientApiControllerMvcTest {
 		assertEquals(clientResponseListMock.stream().findFirst().get().getId(),clientResponseList.stream().findFirst().get().getId());
 	}
 
-	@Test
-	public void GetClients_NoneParameters_ShouldBeReturnInternalServerError() throws Exception {
-
-		// asset
-        when(clientService.findAll()).thenThrow(new ArrayIndexOutOfBoundsException());
-
-		// when
-		mockMvc.perform(get("/client")
-		        .accept(MediaType.APPLICATION_JSON))
-				.andExpect(MockMvcResultMatchers.status().isInternalServerError())
-				.andReturn();
-	}
-
 
 	/**
      * FindClientById
@@ -172,19 +159,6 @@ public class ClientApiControllerMvcTest {
 
 	}
 
-	@Test
-	public void FindClientById_NotExistIdParameter_ShouldBeReturnInternalServerErrorStatus() throws Exception {
-
-		// asset
-        when(clientService.find(any(Long.class))).thenThrow(new ArrayIndexOutOfBoundsException());
-
-		// when
-		mockMvc.perform(get("/client/1")
-		        .accept(MediaType.APPLICATION_JSON))
-				.andExpect(MockMvcResultMatchers.status().isInternalServerError())
-				.andReturn();
-
-	}
 
 
 	/**
@@ -232,24 +206,6 @@ public class ClientApiControllerMvcTest {
 						 .content(objectMapper.writeValueAsString(clientRequest))
 				)
 	            .andExpect(MockMvcResultMatchers.status().isBadRequest())
-	            .andReturn();
-	}
-
-	@Test
-	public void CreateClient_ValidParameters_ShouldBeReturnInternalServerError() throws Exception {
-
-		// asset
-		ClientRequest clientRequest= this.fixture.create(ClientRequest.class);
-		
-        when(this.clientService.create(any(Client.class))).thenThrow(new RuntimeException());
-
-		// when
-		this.mockMvc.perform(
-						  post("/client")
-						 .contentType(MediaType.APPLICATION_JSON)
-						 .content(objectMapper.writeValueAsString(clientRequest))
-				)
-	            .andExpect(MockMvcResultMatchers.status().isInternalServerError())
 	            .andReturn();
 	}
 
@@ -319,23 +275,6 @@ public class ClientApiControllerMvcTest {
 	            .andReturn();
 	}
 
-	@Test
-	public void UpdateClient_ValidParameters_ShouldBeReturnInternalServerError() throws Exception {
-
-		// asset
-		ClientRequest clientRequest= this.fixture.create(ClientRequest.class);
-		
-        when(this.clientService.update(any(Client.class))).thenThrow(new RuntimeException("Exception"));
-
-		// when
-		this.mockMvc.perform(
-						  put("/client")
-						 .contentType(MediaType.APPLICATION_JSON)
-						 .content(objectMapper.writeValueAsString(clientRequest))
-				)
-	            .andExpect(MockMvcResultMatchers.status().isInternalServerError())
-	            .andReturn();
-	}
 
 	/**
      * DeleteClient
@@ -382,21 +321,6 @@ public class ClientApiControllerMvcTest {
 						 .contentType(MediaType.APPLICATION_JSON)
 				)
 	            .andExpect(MockMvcResultMatchers.status().isNotFound())
-	            .andReturn();
-	}
-
-	@Test
-	public void DeleteClient_ValidParameters_ShouldBeReturnInternalServerError() throws Exception {
-
-		// asset		
-        when(this.clientService.delete(any(Long.class))).thenThrow(new ArrayIndexOutOfBoundsException());
-
-		// when
-		this.mockMvc.perform(
-						  delete("/client/1")
-						 .contentType(MediaType.APPLICATION_JSON)
-				)
-	            .andExpect(MockMvcResultMatchers.status().isInternalServerError())
 	            .andReturn();
 	}
 

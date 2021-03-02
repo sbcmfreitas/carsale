@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OrderBy;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import org.springframework.validation.annotation.Validated;
 
@@ -37,6 +38,7 @@ public class Car extends AbstractEntity<Long>{
     private BigDecimal value = null;
 
     @NotEmpty(message="Is need one options, at least")
+    @Size(min=1, max=2,message = "Allowed between 1 and 2 options")
     @ManyToMany(
             targetEntity=Option.class,
             fetch=FetchType.LAZY, 

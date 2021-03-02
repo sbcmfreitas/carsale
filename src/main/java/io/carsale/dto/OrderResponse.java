@@ -2,15 +2,8 @@ package io.carsale.dto;
 
 import java.math.BigDecimal;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.Digits;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import org.springframework.lang.NonNull;
 import org.springframework.validation.annotation.Validated;
 
 import io.swagger.v3.oas.annotations.media.Schema;
