@@ -18,9 +18,9 @@ CarSale
    An embedded database was used (h2) where it is built when uploading the project as well as the relationships between tables and primary keys and foreign keys
 
 	To access the DB frontend, access the address http://localhost:8080/v1/h2-console/login.jsp , after project start.
+	
+	 JdbcUrl: jdbc:h2:mem:testdb
 
-         Jdbc Url: jdbc:h2:mem:testdb
-	 
  	 User: sa
 
   	 Pwd: password
