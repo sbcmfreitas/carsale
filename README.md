@@ -25,7 +25,6 @@ CarSale
 
   	 Pwd: password
   
- 	 H2 More info: https://www.h2database.com/
     
 
 3) The 36 http unit tests were created in java and are in the test \ java \ com \ mvc directory
