@@ -19,6 +19,8 @@ CarSale
 
 	To access the DB frontend, access the address http://localhost:8080/v1/h2-console/login.jsp , after project start.
 
+         Jdbc Url: jdbc:h2:mem:testdb
+	 
  	 User: sa
 
   	 Pwd: password
