@@ -45,9 +45,9 @@ public class CarServiceImpl implements CarService {
 			throw new OptionQuantityRestrictionException(1,LIMIT_MESSAGE);
 		}
 
-		this.find(car.getId());
-
-		carRepository.update(car);
+		if( this.find(car.getId()) != null ){
+			carRepository.update(car);
+		}
 
 		return new CarResponseAdapter(car);
 	}

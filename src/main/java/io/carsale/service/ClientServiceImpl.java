@@ -33,15 +33,11 @@ public class ClientServiceImpl implements ClientService {
 	@Override
 	public ClientResponse update(Client client) {
 
-		ClientResponse clientResponse = this.find(client.getId());
-
-		if(clientResponse.getId()==null){
-			throw new EntityNotFoundException();
+		if( this.find(client.getId()) != null ){
+			clientRepository.update(client);
 		}
 
-		clientRepository.update(client);
-
-		return this.find(client.getId());
+		return new ClientResponseAdapter(client);
 	}
 
 	@Override

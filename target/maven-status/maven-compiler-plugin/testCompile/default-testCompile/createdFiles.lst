@@ -1,6 +1,9 @@
-com\mvc\CarApiControllerMvcTest$1.class
-com\mvc\OrderApiControllerMvcTest$1.class
-com\mvc\CarApiControllerMvcTest.class
-com\mvc\ClientApiControllerMvcTest$1.class
-com\mvc\ClientApiControllerMvcTest.class
-com\mvc\OrderApiControllerMvcTest.class
+com\http\OrderApiControllerMvcTest.class
+com\http\CarApiControllerMvcTest$1.class
+com\http\CarApiControllerMvcTest.class
+com\unit\OrderServiceTest.class
+com\http\ClientApiControllerMvcTest.class
+com\unit\CarServiceTest.class
+com\http\ClientApiControllerMvcTest$1.class
+com\http\OrderApiControllerMvcTest$1.class
+com\unit\ClientServiceTest.class

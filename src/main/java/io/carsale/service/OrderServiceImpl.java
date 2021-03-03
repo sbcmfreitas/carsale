@@ -33,15 +33,11 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public OrderResponse update(Order order) {
 
-		OrderResponse orderResponse = this.find(order.getId());
-
-		if(orderResponse.getId()==null){
-			throw new EntityNotFoundException();
+		if(this.find(order.getId())!=null){
+			orderRepository.update(order);
 		}
 
-		orderRepository.update(order);
-
-		return this.find(order.getId());
+		return new OrderResponseAdapter(order);
 	}
 
 	@Override

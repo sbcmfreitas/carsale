@@ -1,3 +1,6 @@
-C:\GIT\CarSale\src\test\java\com\mvc\CarApiControllerMvcTest.java
-C:\GIT\CarSale\src\test\java\com\mvc\OrderApiControllerMvcTest.java
-C:\GIT\CarSale\src\test\java\com\mvc\ClientApiControllerMvcTest.java
+C:\GIT\CarSale\src\test\java\com\http\OrderApiControllerMvcTest.java
+C:\GIT\CarSale\src\test\java\com\unit\OrderServiceTest.java
+C:\GIT\CarSale\src\test\java\com\http\CarApiControllerMvcTest.java
+C:\GIT\CarSale\src\test\java\com\http\ClientApiControllerMvcTest.java
+C:\GIT\CarSale\src\test\java\com\unit\ClientServiceTest.java
+C:\GIT\CarSale\src\test\java\com\unit\CarServiceTest.java

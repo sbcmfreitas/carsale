@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.http.ClientApiControllerMvcTest
+-------------------------------------------------------------------------------
+Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.454 s - in com.http.ClientApiControllerMvcTest
