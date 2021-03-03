@@ -18,15 +18,16 @@ CarSale
    An embedded database was used (h2) where it is built when uploading the project as well as the relationships between tables and primary keys and foreign keys
 
 	To access the DB frontend, access the address http://localhost:8080/v1/h2-console/login.jsp , after project start.
+	
+	 JdbcUrl: jdbc:h2:mem:testdb
 
  	 User: sa
 
   	 Pwd: password
   
- 	 H2 More info: https://www.h2database.com/
     
 
-3) The 50 http unit tests were created in java and are in the test \ java \ com \ mvc directory
+3) The 36 http unit tests were created in java and are in the test \ java \ com \ mvc directory
    To run the test, clone this project and use the maven in the terminal: 
    
    mvn test   or    mvn clean install
