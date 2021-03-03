@@ -27,7 +27,7 @@ CarSale
   
     
 
-3) The 36 http unit tests were created in java and are in the test \ java \ com \ mvc directory
+3) The http unit tests were created in java and are in the test \ java \ com \ mvc directory
    To run the test, clone this project and use the maven in the terminal: 
    
    mvn test   or    mvn clean install
