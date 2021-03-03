@@ -1,7 +1,6 @@
-com\mvc\OrderApiControllerMvcTest$1.class
-com\mvc\ClientApiControllerMvcTest.class
-com\mvc\OrderApiControllerMvcTest.class
 com\mvc\CarApiControllerMvcTest$1.class
+com\mvc\OrderApiControllerMvcTest$1.class
 com\mvc\CarApiControllerMvcTest.class
 com\mvc\ClientApiControllerMvcTest$1.class
-com\mvc\RunTimeException.class
+com\mvc\ClientApiControllerMvcTest.class
+com\mvc\OrderApiControllerMvcTest.class
