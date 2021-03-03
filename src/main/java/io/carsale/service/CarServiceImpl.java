@@ -32,7 +32,7 @@ public class CarServiceImpl implements CarService {
 		if(car.getOptions().size()>2){
 			throw new OptionQuantityRestrictionException(1,LIMIT_MESSAGE);
 		}
-
+		
 		carRepository.save(car);
 
 		return new CarResponseAdapter(car);
@@ -45,15 +45,11 @@ public class CarServiceImpl implements CarService {
 			throw new OptionQuantityRestrictionException(1,LIMIT_MESSAGE);
 		}
 
-		CarResponse carResponse = this.find(car.getId());
-
-		if(carResponse.getId()==null){
-			throw new EntityNotFoundException();
-		}
+		this.find(car.getId());
 
 		carRepository.update(car);
 
-		return this.find(car.getId());
+		return new CarResponseAdapter(car);
 	}
 
 	@Override

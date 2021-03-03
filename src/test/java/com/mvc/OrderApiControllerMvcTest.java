@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -124,6 +125,19 @@ public class OrderApiControllerMvcTest {
 		assertEquals(orderResponseListMock.stream().findFirst().get().getId(),orderResponseList.stream().findFirst().get().getId());
 	}
 
+	@Test(expected = Exception.class)
+	public void GetOrders_ValidParameters_ShouldBeReturnException() throws Exception {
+
+		// asset
+		given(orderService.findAll()).willAnswer(invocation -> { throw new Exception();});
+
+		// when
+		mockMvc.perform(get("/order")
+		        .accept(MediaType.APPLICATION_JSON))
+				.andReturn();
+
+	}
+
 	/**
      * FindOrderById
      **/
@@ -158,6 +172,19 @@ public class OrderApiControllerMvcTest {
 		mockMvc.perform(get("/order/1")
 		        .accept(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers.status().isNotFound())
+				.andReturn();
+
+	}
+
+	@Test(expected = Exception.class)
+	public void FindOrderById_ValidParameters_ShouldBeReturnException() throws Exception {
+
+		// asset
+		given(orderService.find(any(Long.class))).willAnswer(invocation -> { throw new Exception();});
+
+		// when
+		mockMvc.perform(get("/order/1")
+		        .accept(MediaType.APPLICATION_JSON))
 				.andReturn();
 
 	}
@@ -212,6 +239,23 @@ public class OrderApiControllerMvcTest {
 	            .andReturn();
 	}
 
+	@Test(expected = Exception.class)
+	public void CreateOrder_ValidParameters_ShouldBeReturnException() throws Exception {
+
+		// asset
+		OrderRequest orderRequest   = this.fixture.create(OrderRequest.class);
+
+		given(this.orderService.create(any(Order.class))).willAnswer(invocation -> { throw new Exception();});
+
+		// when
+		this.mockMvc.perform(
+			post("/order")
+		   .contentType(MediaType.APPLICATION_JSON)
+		   .content(objectMapper.writeValueAsString(orderRequest))
+			)
+			.andReturn();
+
+	}
 
 
 	/**
@@ -279,6 +323,24 @@ public class OrderApiControllerMvcTest {
 	            .andReturn();
 	}
 
+	@Test(expected = Exception.class)
+	public void UpdateOrder_ValidParameters_ShouldBeReturnException() throws Exception {
+
+		// asset
+		OrderRequest orderRequest   = this.fixture.create(OrderRequest.class);
+
+		given(this.orderService.update(any(Order.class))).willAnswer(invocation -> { throw new Exception();});
+
+		// when
+		this.mockMvc.perform(
+						  put("/order")
+						 .contentType(MediaType.APPLICATION_JSON)
+						 .content(objectMapper.writeValueAsString(orderRequest))
+				)
+	            .andReturn();
+
+	}
+
 	/**
      * DeleteOrder
      **/
@@ -325,6 +387,21 @@ public class OrderApiControllerMvcTest {
 				)
 	            .andExpect(MockMvcResultMatchers.status().isNotFound())
 	            .andReturn();
+	}
+
+	@Test(expected = Exception.class)
+	public void DeleteOrder_ValidParameters_ShouldBeReturnException() throws Exception {
+
+		// asset
+		given(this.orderService.delete(any(Long.class))).willAnswer(invocation -> { throw new Exception();});
+
+		// when
+		this.mockMvc.perform(
+						  delete("/order/1")
+						 .contentType(MediaType.APPLICATION_JSON)
+				)
+	            .andReturn();
+
 	}
 
 

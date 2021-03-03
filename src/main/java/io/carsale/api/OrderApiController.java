@@ -28,8 +28,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @RestController
 public class OrderApiController implements OrderApi {
 
-    private static final Logger log = LoggerFactory.getLogger(OrderApiController.class);
-
     @Autowired
     private OrderService orderService;
 

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -122,9 +123,23 @@ public class CarApiControllerMvcTest {
 	}
 
 
+	@Test(expected = Exception.class)
+	public void GetCars_NoneParameters_ShouldBeReturnException() throws Exception {
+
+		// asset
+		given(carService.findAll()).willAnswer(invocation -> { throw new Exception();});
+
+		// when
+		mockMvc.perform(get("/car")
+		        .accept(MediaType.APPLICATION_JSON))
+				.andReturn();
+
+	}
+
+
 	/**
-     * FindCarById
-     **/
+	 * FindCarById
+	 **/
 	@Test
 	public void FindCarById_ValidParameter_ShouldBeReturnCarResponse() throws Exception {
 
@@ -156,6 +171,19 @@ public class CarApiControllerMvcTest {
 		mockMvc.perform(get("/car/1")
 		        .accept(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers.status().isNotFound())
+				.andReturn();
+
+	}
+
+	@Test(expected = Exception.class)
+	public void FindCarById_NoneParameters_ShouldBeReturnException() throws Exception {
+
+		// asset
+		given(carService.find(any(Long.class))).willAnswer(invocation -> { throw new Exception();});
+
+		// when
+		mockMvc.perform(get("/car/1")
+		        .accept(MediaType.APPLICATION_JSON))
 				.andReturn();
 
 	}
@@ -226,6 +254,25 @@ public class CarApiControllerMvcTest {
 				)
 	            .andExpect(MockMvcResultMatchers.status().isBadRequest())
 	            .andReturn();
+	}
+
+
+	@Test(expected = Exception.class)
+	public void CreateCar_ValidParameter_ShouldBeReturnException() throws Exception {
+
+		// asset
+		CarRequest carRequest= this.fixture.create(CarRequest.class);
+
+		given(this.carService.create(any(Car.class))).willAnswer(invocation -> { throw new Exception();});
+
+		// when
+		this.mockMvc.perform(
+						  post("/car")
+						 .contentType(MediaType.APPLICATION_JSON)
+						 .content(objectMapper.writeValueAsString(carRequest))
+				)
+	            .andReturn();
+
 	}
 
 
@@ -313,6 +360,24 @@ public class CarApiControllerMvcTest {
 	            .andReturn();
 	}
 
+	@Test(expected = Exception.class)
+	public void UpdateCar_ValidParameter_ShouldBeReturnException() throws Exception {
+
+		// asset
+		CarRequest carRequest= this.fixture.create(CarRequest.class);
+
+		given(this.carService.update(any(Car.class))).willAnswer(invocation -> { throw new Exception();});
+
+		// when
+		this.mockMvc.perform(
+						  put("/car")
+						 .contentType(MediaType.APPLICATION_JSON)
+						 .content(objectMapper.writeValueAsString(carRequest))
+				)
+	            .andReturn();
+
+	}
+
 	/**
      * DeleteCar
      **/
@@ -345,6 +410,21 @@ public class CarApiControllerMvcTest {
 				)
 	            .andExpect(MockMvcResultMatchers.status().isNotFound())
 	            .andReturn();
+	}
+
+	@Test(expected = Exception.class)
+	public void DeleteCar_ValidParameter_ShouldBeReturnException() throws Exception {
+
+		// asset
+		given(this.carService.delete(any(Long.class))).willAnswer(invocation -> { throw new Exception();});
+
+		// when
+		this.mockMvc.perform(
+						  delete("/car/1")
+						 .contentType(MediaType.APPLICATION_JSON)
+				)
+	            .andReturn();
+
 	}
 
 	

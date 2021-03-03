@@ -29,8 +29,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @RestController
 public class CarApiController implements CarApi {
 
-    private static final Logger log = LoggerFactory.getLogger(CarApiController.class);
-
     @Autowired
     private CarService carService;
 

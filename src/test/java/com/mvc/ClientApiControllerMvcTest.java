@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -120,6 +121,19 @@ public class ClientApiControllerMvcTest {
 		assertEquals(clientResponseListMock.stream().findFirst().get().getId(),clientResponseList.stream().findFirst().get().getId());
 	}
 
+	@Test(expected = Exception.class)
+	public void GetClients_NoneParameters_ShouldBeReturnException() throws Exception {
+
+		// asset
+		given(clientService.findAll()).willAnswer(invocation -> { throw new Exception();});
+
+		// when
+		mockMvc.perform(get("/client")
+		        .accept(MediaType.APPLICATION_JSON))
+				.andReturn();
+
+	}
+
 
 	/**
      * FindClientById
@@ -155,6 +169,19 @@ public class ClientApiControllerMvcTest {
 		mockMvc.perform(get("/client/1")
 		        .accept(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers.status().isNotFound())
+				.andReturn();
+
+	}
+
+	@Test(expected = Exception.class)
+	public void FindClientById_NoneParameters_ShouldBeReturnException() throws Exception {
+
+		// asset
+		given(clientService.find(any(Long.class))).willAnswer(invocation -> { throw new Exception();});
+
+		// when
+		mockMvc.perform(get("/client/1")
+		        .accept(MediaType.APPLICATION_JSON))
 				.andReturn();
 
 	}
@@ -209,6 +236,24 @@ public class ClientApiControllerMvcTest {
 	            .andReturn();
 	}
 
+	@Test(expected = Exception.class)
+	public void CreateClient_NoneParameters_ShouldBeReturnException() throws Exception {
+
+		// asset
+		ClientRequest clientRequest   = this.fixture.create(ClientRequest.class);
+
+		given(this.clientService.create(any(Client.class))).willAnswer(invocation -> { throw new Exception();});
+
+		// when
+		this.mockMvc.perform(
+						  post("/client")
+						 .contentType(MediaType.APPLICATION_JSON)
+						 .content(objectMapper.writeValueAsString(clientRequest))
+				)
+	            .andReturn();
+
+	}
+
 
 	/**
      * UpdateClient
@@ -255,6 +300,25 @@ public class ClientApiControllerMvcTest {
 				)
 	            .andExpect(MockMvcResultMatchers.status().isBadRequest())
 	            .andReturn();
+	}
+
+	@Test(expected = Exception.class)
+	public void UpdateClient_NoneParameters_ShouldBeReturnException() throws Exception {
+
+		// asset
+		ClientRequest clientRequest   = this.fixture.create(ClientRequest.class);
+
+		given(this.clientService.update(any(Client.class))).willAnswer(invocation -> { throw new Exception();});
+
+		// when
+		this.mockMvc.perform(
+						  put("/client")
+						 .contentType(MediaType.APPLICATION_JSON)
+						 .content(objectMapper.writeValueAsString(clientRequest))
+				)
+	            .andExpect(MockMvcResultMatchers.status().isBadRequest())
+	            .andReturn();
+
 	}
 
 	@Test
@@ -322,6 +386,21 @@ public class ClientApiControllerMvcTest {
 				)
 	            .andExpect(MockMvcResultMatchers.status().isNotFound())
 	            .andReturn();
+	}
+
+	@Test(expected = Exception.class)
+	public void DeleteClient_NoneParameters_ShouldBeReturnException() throws Exception {
+
+		// asset
+		given(this.clientService.delete(any(Long.class))).willAnswer(invocation -> { throw new Exception();});
+
+		// when
+		this.mockMvc.perform(
+						  delete("/client/1")
+						 .contentType(MediaType.APPLICATION_JSON)
+				)
+	            .andReturn();
+
 	}
 
 	

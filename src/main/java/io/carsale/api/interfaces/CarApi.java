@@ -28,7 +28,7 @@ public interface CarApi {
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "201", description = "Created", content = @Content(schema = @Schema(implementation = CarResponse.class))),      
         @ApiResponse(responseCode = "400", description = "Bad request"),
-        @ApiResponse(responseCode = "500", description = "Internal server Error", content = @Content(schema = @Schema(implementation = ApiException.class))) })
+        @ApiResponse(responseCode = "500", description = "Internal server Error") })
         
     @RequestMapping(value = "/car",
         produces = { "application/json" }, 

@@ -28,8 +28,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @RestController
 public class ClientApiController implements ClientApi {
 
-    private static final Logger log = LoggerFactory.getLogger(ClientApiController.class);
-
     @Autowired
     private ClientService clientService;
 
