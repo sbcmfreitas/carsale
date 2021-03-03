@@ -32,7 +32,7 @@ CarSale
    
    mvn test   or    mvn clean install
    
-   Show source: https://github.com/sbcmfreitas/carsale/tree/master/src/test/java/com/mvc
+   Show source: https://github.com/sbcmfreitas/carsale/tree/master/src/test/java/com
    
 
 
