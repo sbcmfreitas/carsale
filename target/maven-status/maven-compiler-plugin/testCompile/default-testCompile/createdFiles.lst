@@ -7,3 +7,4 @@ com\unit\CarServiceTest.class
 com\http\ClientApiControllerMvcTest$1.class
 com\http\OrderApiControllerMvcTest$1.class
 com\unit\ClientServiceTest.class
+com\unit\ModelMapperTest.class

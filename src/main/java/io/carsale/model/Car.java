@@ -59,18 +59,6 @@ public class Car extends AbstractEntity<Long>{
     public Car() {
     }
 
-    public Car(CarRequest req) {
-      super();
-      this.id = req.getId()!=null ? req.getId() : null;
-      this.brand = new Brand(req.getBrandId());
-      this.value = req.getValue();
-      this.options = req.getOptionIds().stream().map(p -> new Option(p)).collect(Collectors.toList());
-    }
-
-    public Car(Long id) {
-      super();
-      this.id = id;
-    }
 
     /**
      * Get brand

@@ -20,11 +20,6 @@ public class Brand extends AbstractEntity<Long> {
       super();
     }
 
-    public Brand(Long id) {
-      super();
-      this.id = id;
-    }
-
     /**
      * Get name
      * @return name

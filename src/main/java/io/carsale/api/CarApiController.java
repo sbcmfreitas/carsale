@@ -5,8 +5,7 @@ import java.util.List;
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.carsale.adapter.ModelMapperFactory;
 import io.carsale.api.interfaces.CarApi;
 import io.carsale.dto.CarRequest;
 import io.carsale.dto.CarResponse;
@@ -32,13 +32,17 @@ public class CarApiController implements CarApi {
     @Autowired
     private CarService carService;
 
+    private ModelMapper modelMapper = ModelMapperFactory.getInstance();
+
     public ResponseEntity<CarResponse> createCar(
         @Parameter(in = ParameterIn.DEFAULT, description = "Car object that needs to be added to the store", required=true, schema=@Schema()) 
         @Valid @RequestBody CarRequest carRequest) throws Exception {
         
         try {
 
-            CarResponse carResponse = this.carService.create(new Car(carRequest));
+            Car car = modelMapper.map(carRequest, Car.class);
+
+            CarResponse carResponse = this.carService.create(car);
 
             return new ResponseEntity<CarResponse>(carResponse, HttpStatus.CREATED);
 
@@ -56,11 +60,13 @@ public class CarApiController implements CarApi {
 
     public ResponseEntity<CarResponse> updateCar(
           @Parameter(in = ParameterIn.DEFAULT, description = "Car object that needs to be added to the store", required=true, schema=@Schema()) 
-          @Valid @RequestBody CarRequest body) {
+          @Valid @RequestBody CarRequest carRequest) {
        
         try {
 
-            CarResponse carResponse = this.carService.update(new Car(body));
+            Car car = modelMapper.map(carRequest, Car.class);
+
+            CarResponse carResponse = this.carService.update(car);
 
             return new ResponseEntity<CarResponse>(carResponse, HttpStatus.ACCEPTED);
 

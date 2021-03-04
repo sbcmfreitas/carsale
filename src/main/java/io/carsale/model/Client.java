@@ -35,20 +35,6 @@ public class Client extends AbstractEntity<Long> {
     super();
   }
 
-  public Client(Long id) {
-    super();
-    this.id = id;
-  }
-
-  public Client(ClientRequest clientRequest) {
-    this.id = clientRequest.getId()!=null?clientRequest.getId():null;
-    this.firstName = clientRequest.getFirstName()!=null?clientRequest.getFirstName():null;
-    this.lastName = clientRequest.getLastName()!=null?clientRequest.getLastName():null;
-    this.email = clientRequest.getEmail()!=null?clientRequest.getEmail():null;
-    this.phone = clientRequest.getPhone()!=null?clientRequest.getPhone():null;
-  }
-
- 
 
   /**
    * Get firstName

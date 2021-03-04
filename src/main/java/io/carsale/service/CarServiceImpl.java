@@ -5,11 +5,12 @@ import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import io.carsale.adapter.CarResponseAdapter;
+import io.carsale.adapter.ModelMapperFactory;
 import io.carsale.dto.CarResponse;
 import io.carsale.exception.OptionQuantityRestrictionException;
 import io.carsale.model.Car;
@@ -26,6 +27,8 @@ public class CarServiceImpl implements CarService {
 
 	private static final String LIMIT_MESSAGE = "Limit of 2 options has been exceeded";
 
+	private ModelMapper modelMapper = ModelMapperFactory.getInstance();
+
 	@Override
 	public CarResponse create(Car car) throws OptionQuantityRestrictionException {
 
@@ -35,7 +38,7 @@ public class CarServiceImpl implements CarService {
 		
 		carRepository.save(car);
 
-		return new CarResponseAdapter(car);
+		return modelMapper.map(car, CarResponse.class);
 	}
 
 	@Override
@@ -49,7 +52,7 @@ public class CarServiceImpl implements CarService {
 			carRepository.update(car);
 		}
 
-		return new CarResponseAdapter(car);
+		return modelMapper.map(car, CarResponse.class);
 	}
 
 	@Override
@@ -68,13 +71,13 @@ public class CarServiceImpl implements CarService {
 			throw new EntityNotFoundException();
 		}
 
-		return new CarResponseAdapter(car);
+		return modelMapper.map(car, CarResponse.class);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<CarResponse> findAll() {
-		return carRepository.findAll().stream().map(p-> new CarResponseAdapter(p)).collect(Collectors.toList());
+		return carRepository.findAll().stream().map(p-> modelMapper.map(p, CarResponse.class)).collect(Collectors.toList());
 	}
 
 }

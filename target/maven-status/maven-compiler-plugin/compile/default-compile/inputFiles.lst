@@ -1,15 +1,13 @@
 C:\GIT\CarSale\src\main\java\io\carsale\model\AbstractEntity.java
 C:\GIT\CarSale\src\main\java\io\carsale\configuration\SwaggerUiConfiguration.java
 C:\GIT\CarSale\src\main\java\io\carsale\enums\StatusEnum.java
-C:\GIT\CarSale\src\main\java\io\carsale\adapter\ClientResponseAdapter.java
 C:\GIT\CarSale\src\main\java\io\carsale\configuration\SwaggerDocumentationConfig.java
 C:\GIT\CarSale\src\main\java\io\carsale\api\interfaces\ClientApi.java
 C:\GIT\CarSale\src\main\java\io\carsale\dto\OptionResponse.java
 C:\GIT\CarSale\src\main\java\io\carsale\model\Option.java
+C:\GIT\CarSale\src\main\java\io\carsale\adapter\ModelMapperFactory.java
 C:\GIT\CarSale\src\main\java\io\carsale\service\interfaces\BrandService.java
 C:\GIT\CarSale\src\main\java\io\carsale\api\CarApiController.java
-C:\GIT\CarSale\src\main\java\io\carsale\adapter\CarResponseAdapter.java
-C:\GIT\CarSale\src\main\java\io\carsale\adapter\OrderResponseAdapter.java
 C:\GIT\CarSale\src\main\java\io\carsale\api\OrderApiController.java
 C:\GIT\CarSale\src\main\java\io\carsale\dto\BrandResponse.java
 C:\GIT\CarSale\src\main\java\io\carsale\configuration\CustomInstantDeserializer.java

@@ -5,8 +5,7 @@ import java.util.List;
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.carsale.adapter.ModelMapperFactory;
 import io.carsale.api.interfaces.ClientApi;
 import io.carsale.dto.ClientRequest;
 import io.carsale.dto.ClientResponse;
@@ -31,13 +31,17 @@ public class ClientApiController implements ClientApi {
     @Autowired
     private ClientService clientService;
 
+    private ModelMapper modelMapper = ModelMapperFactory.getInstance();
+
     public ResponseEntity<ClientResponse> createClient(
         @Parameter(in = ParameterIn.DEFAULT, description = "Created client object", required=true, schema=@Schema()) 
         @Valid @RequestBody ClientRequest clientRequest) {
 
         try {
 
-            ClientResponse clientResponse = this.clientService.create(new Client(clientRequest));
+            Client client = modelMapper.map(clientRequest, Client.class);
+
+            ClientResponse clientResponse = this.clientService.create(client);
 
             return new ResponseEntity<ClientResponse>(clientResponse, HttpStatus.CREATED);
 
@@ -58,7 +62,9 @@ public class ClientApiController implements ClientApi {
         
         try {
 
-            ClientResponse carResponse = this.clientService.update(new Client(clientRequest));
+            Client client = modelMapper.map(clientRequest, Client.class);
+
+            ClientResponse carResponse = this.clientService.update(client);
 
             return new ResponseEntity<ClientResponse>(carResponse, HttpStatus.ACCEPTED);
 

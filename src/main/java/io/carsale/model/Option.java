@@ -35,11 +35,6 @@ public class Option extends AbstractEntity<Long> {
       super();
     }
 
-    public Option(Long id) {
-      super();
-      this.id = id;
-    }
-
     /**
      * Get name
      * @return name

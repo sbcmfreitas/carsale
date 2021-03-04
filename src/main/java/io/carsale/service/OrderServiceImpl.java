@@ -5,11 +5,12 @@ import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import io.carsale.adapter.OrderResponseAdapter;
+import io.carsale.adapter.ModelMapperFactory;
 import io.carsale.dto.OrderResponse;
 import io.carsale.model.Order;
 import io.carsale.repository.interfaces.OrderRespository;
@@ -22,12 +23,14 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private OrderRespository orderRepository;
 
+	private ModelMapper modelMapper = ModelMapperFactory.getInstance();
+
 	@Override
 	public OrderResponse create(Order order) {
 
 		orderRepository.save(order);
 
-		return new OrderResponseAdapter(order);
+		return modelMapper.map(order, OrderResponse.class);
 	}
 
 	@Override
@@ -37,7 +40,7 @@ public class OrderServiceImpl implements OrderService {
 			orderRepository.update(order);
 		}
 
-		return new OrderResponseAdapter(order);
+		return modelMapper.map(order, OrderResponse.class);
 	}
 
 	@Override
@@ -56,13 +59,13 @@ public class OrderServiceImpl implements OrderService {
 			throw new EntityNotFoundException();
 		}
 
-		return new OrderResponseAdapter(order);
+		return modelMapper.map(order, OrderResponse.class);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<OrderResponse> findAll() {
-		return orderRepository.findAll().stream().map(p-> new OrderResponseAdapter(p)).collect(Collectors.toList());
+		return orderRepository.findAll().stream().map(p-> modelMapper.map(p, OrderResponse.class)).collect(Collectors.toList());
 	}
 
 }

@@ -5,8 +5,7 @@ import java.util.List;
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.carsale.adapter.ModelMapperFactory;
 import io.carsale.api.interfaces.OrderApi;
 import io.carsale.dto.OrderRequest;
 import io.carsale.dto.OrderResponse;
@@ -31,13 +31,17 @@ public class OrderApiController implements OrderApi {
     @Autowired
     private OrderService orderService;
 
+    private ModelMapper modelMapper = ModelMapperFactory.getInstance();
+
     public ResponseEntity<OrderResponse> createOrder(
         @Parameter(in = ParameterIn.DEFAULT, description = "Created order object", required=true, schema=@Schema()) 
         @Valid @RequestBody OrderRequest orderRequest) {
 
         try {
 
-            OrderResponse orderResponse = this.orderService.create(new Order(orderRequest));
+            Order order = modelMapper.map(orderRequest, Order.class);
+
+            OrderResponse orderResponse = this.orderService.create(order);
 
             return new ResponseEntity<OrderResponse>(orderResponse, HttpStatus.CREATED);
 
@@ -58,7 +62,9 @@ public class OrderApiController implements OrderApi {
         
         try {
 
-            OrderResponse carResponse = this.orderService.update(new Order(orderRequest));
+            Order order = modelMapper.map(orderRequest, Order.class);
+
+            OrderResponse carResponse = this.orderService.update(order);
 
             return new ResponseEntity<OrderResponse>(carResponse, HttpStatus.ACCEPTED);
 

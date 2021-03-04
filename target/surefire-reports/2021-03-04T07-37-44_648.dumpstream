@@ -1,0 +1,15 @@
+# Created at 2021-03-04T07:37:50.364
+WARNING: An illegal reflective access operation has occurred
+
+# Created at 2021-03-04T07:37:50.365
+WARNING: Illegal reflective access using Lookup on org.modelmapper.internal.ProxyFactory (file:/C:/Users/sbcmf/.m2/repository/org/modelmapper/modelmapper/2.3.9/modelmapper-2.3.9.jar) to interface java.util.List
+
+# Created at 2021-03-04T07:37:50.366
+WARNING: Please consider reporting this to the maintainers of org.modelmapper.internal.ProxyFactory
+
+# Created at 2021-03-04T07:37:50.367
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+
+# Created at 2021-03-04T07:37:50.370
+WARNING: All illegal access operations will be denied in a future release
+

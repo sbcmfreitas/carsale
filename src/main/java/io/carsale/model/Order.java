@@ -53,15 +53,6 @@ public class Order extends AbstractEntity<Long>{
   public Order(){
     super();
   }
-  
-  public Order(OrderRequest orderRequest) {
-    this.id = orderRequest.getId()!=null ? orderRequest.getId():null;   
-    this.car = new Car(orderRequest.getCarId());
-    this.client = new Client(orderRequest.getClientId());
-    this.value = orderRequest.getValue();
-    this.orderDate = orderRequest.getOrderDate();
-    this.status = orderRequest.getStatus();
-  }
 
   /**
    * Get client
