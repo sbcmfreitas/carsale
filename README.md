@@ -27,12 +27,12 @@ CarSale
   
     
 
-3) The 36 http unit tests were created in java and are in the test \ java \ com \ mvc directory
+3) The http unit tests were created in java and are in the test \ java \ com \ mvc directory
    To run the test, clone this project and use the maven in the terminal: 
    
    mvn test   or    mvn clean install
    
-   Show source: https://github.com/sbcmfreitas/carsale/tree/master/src/test/java/com/mvc
+   Show source: https://github.com/sbcmfreitas/carsale/tree/master/src/test/java/com
    
 
 
@@ -44,7 +44,7 @@ CarSale
 
    docker run -p 8080:8080 --name carsale masrcosrfreitas/carsale:version1
 
-   https://hub.docker.com/layers/139391986/masrcosrfreitas/carsale/version1/images/sha256-14376733235b666120b2ce1b3aaa2670af531a8045e859daa3b54ca620a28153?context=explore		   
+   https://hub.docker.com/repository/docker/masrcosrfreitas/carsale		   
  
    (it is possible to run the application from the jar file, if you prefer)
    Jar File Executable: https://github.com/sbcmfreitas/carsale/blob/master/target/carsale-spring-1.0.0.jar
