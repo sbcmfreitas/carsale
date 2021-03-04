@@ -12,7 +12,7 @@ VALUES (1, 'Back Sensor'),
 
 MERGE INTO CLIENT
   KEY(ID) 
-VALUES (1 ,'sbc.mfreitas@bol.com.br','Marcos Roberto','Freitas','910537364');
+VALUES (1 ,'test@bol.com.br','Marcos Americo','Santos','999555222');
 
 MERGE INTO CAR
   KEY(ID) 
